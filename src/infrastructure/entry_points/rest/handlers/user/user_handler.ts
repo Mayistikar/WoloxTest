@@ -9,8 +9,9 @@ class UserHandler {
     this.FindAllUseCase = findAllUseCase;
   }
 
-  async FindAll(req: Request, res: Response): Promise<Response>{
-    return res.status(200).json({ message: 'hello user' });
+  FindAll = async (req: Request, res: Response): Promise<Response> => {
+    const users = this.FindAllUseCase.FindAll();
+    return res.status(200).json(users);
   }
 }
 

@@ -1,4 +1,4 @@
-import { UserGateway } from '../model/gateways/user_gateway'
+import { UserGateway } from '../../model/gateways/user_gateway'
 
 class FindAllUseCase {
   UserGateway: UserGateway;
