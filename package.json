@@ -1,0 +1,25 @@
+{
+  "name": "woloxtest",
+  "version": "1.0.0",
+  "description": "Wolox Code Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mayistikar/WoloxTest.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Anderson R.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mayistikar/WoloxTest/issues"
+  },
+  "homepage": "https://github.com/Mayistikar/WoloxTest#readme",
+  "dependencies": {
+    "typescript": "^4.2.4"
+  }
+}
