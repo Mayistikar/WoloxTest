@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import { FindUserUseCase } from '../../application/find_user_use_case';
 
-class UserHandler {
+class FindUserHandler {
   FindUserUseCase: FindUserUseCase
 
   constructor(findUserUseCase: FindUserUseCase) {
@@ -15,4 +15,4 @@ class UserHandler {
   }
 }
 
-export { UserHandler }
+export { FindUserHandler }

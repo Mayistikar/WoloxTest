@@ -21,3 +21,5 @@ export class User {
     @Column()
     favoriteCoin: string;
 }
+
+export { User as UserTypeorm };

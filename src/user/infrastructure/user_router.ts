@@ -1,17 +1,25 @@
 import express from 'express';
 
-import { UserTypeOrm } from './data_sources/database/typeorm/user_typeorm_imp';
+import { FindUserTypeOrm } from './data_sources/database/typeorm/find_user_typeorm';
 import { FindUserUseCase } from '../application/find_user_use_case';
-import { UserHandler } from './entry_points/user_handler';
+import { FindUserHandler } from './entry_points/find_user_handler';
+
+import { CreateUserTypeOrm } from './data_sources/database/typeorm/create_user_typeorm';
+import { CreateUserHandler } from './entry_points/create_user_handler';
+import { CreateUserUseCase } from '../application/create_user_use_case';
 
 const UserRouter = express.Router();
 
-const userTypeOrm = new UserTypeOrm();
-
 // Find User
-const findUserUseCase = new FindUserUseCase(userTypeOrm);
-const findUserHandler = new UserHandler(findUserUseCase);
+const findUserTypeOrm = new FindUserTypeOrm();
+const findUserUseCase = new FindUserUseCase(findUserTypeOrm);
+const findUserHandler = new FindUserHandler(findUserUseCase);
 UserRouter.get('', findUserHandler.FindAll);
 
+// Create User
+const createUserTypeOrm = new CreateUserTypeOrm();
+const createUserUseCase = new CreateUserUseCase(createUserTypeOrm);
+const createUserHandler = new CreateUserHandler(createUserUseCase);
+UserRouter.post('', createUserHandler.AddOne);
 
 export { UserRouter }

@@ -1,4 +1,4 @@
-class UserTypeOrm {
+class FindUserTypeOrm {
 
   MockData: any = {
     Name: "Name",
@@ -12,9 +12,9 @@ class UserTypeOrm {
 
   constructor() {}
 
-  FindAll(): any[] {    
+  GetAll(): any[] {    
     return [ this.MockData ];
   }
 }
 
-export { UserTypeOrm }
+export { FindUserTypeOrm }

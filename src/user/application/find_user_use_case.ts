@@ -1,14 +1,14 @@
-import { UserRepository } from '../domain/repositories/user_repository'
+import { FindUserRepository } from '../domain/repositories/find_user_repository'
 
 class FindUserUseCase {
-  UserRepository: UserRepository;
+  FindUserRepository: FindUserRepository;
   
-  constructor(userRepository: UserRepository) {
-    this.UserRepository = userRepository
+  constructor(findUserRepository: FindUserRepository) {
+    this.FindUserRepository = findUserRepository
   }
 
   GetAll() {
-    return this.UserRepository.FindAll();
+    return this.FindUserRepository.GetAll();
   }
 
 }
