@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import { Router } from '../../infrastructure/entry_points/rest/routers/routers'
+import { Router } from './router'
 
 const app: Application = express();
 const port: Number = 3000;
