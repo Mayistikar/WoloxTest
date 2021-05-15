@@ -11,6 +11,10 @@ class FindUserUseCase {
     return this.FindUserRepository.GetAll();
   }
 
+  FindByUsername(username: string) {
+    return this.FindUserRepository.FindByUsername(username);
+  }
+
 }
 
 export { FindUserUseCase }

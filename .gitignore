@@ -105,3 +105,6 @@ dist
 
 # TypeOrm Config
 ormconfig.js
+
+# VS Debug
+.vscode/

@@ -1,7 +1,8 @@
 import { User } from '../models/user'
 
 interface FindUserRepository {
-  GetAll(): User[]
+  GetAll(): Promise<any[]>
+  FindByUsername(username: string): Promise<any>
 }
 
 export { FindUserRepository }

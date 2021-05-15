@@ -1,7 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 import { User } from './user_typeorm_entity'
 
-class CreateUserTypeOrm {
+class CreateUserTypeorm {
   UserTypeorm: Repository<User>
   constructor() {}
 
@@ -19,4 +19,4 @@ class CreateUserTypeOrm {
   }
 }
 
-export { CreateUserTypeOrm }
+export { CreateUserTypeorm }

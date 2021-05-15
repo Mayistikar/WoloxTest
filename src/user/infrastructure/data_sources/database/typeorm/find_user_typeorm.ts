@@ -1,19 +1,18 @@
+import { getRepository, Repository } from "typeorm";
+import { User } from "./user_typeorm_entity";
+
 class FindUserTypeOrm {
 
-  MockData: any = {
-    Name: "Name",
-    Surname: "Surname",
-    Username: "Username",
-    Password: "Password",
-    FavoriteCoin: {
-      Name: "Name"
-    }
-  }
+  UserTypeorm: Repository<User>
 
   constructor() {}
 
-  GetAll(): any[] {    
-    return [ this.MockData ];
+  async GetAll(): Promise<User[]> {    
+    return getRepository(User).find();
+  }
+
+  async FindByUsername(username: string): Promise<User> {
+    return getRepository(User).findOne({ username });
   }
 }
 

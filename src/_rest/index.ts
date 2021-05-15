@@ -1,7 +1,9 @@
 import express, { Application } from "express";
 import{ createConnection }from"typeorm";
+import { JWTAuth } from "./middlewares/auth/jwt";
+import { Recovery } from "./middlewares/recovery/recovery";
 
-import { Router } from './router'
+import { Router, PublicRouter } from './router'
 
 // Application
 const app: Application = express();
@@ -9,12 +11,19 @@ const port: Number = 3000;
 const basePathV1: string = '/api/v1';
 
 try {
-    // Middlewares
+    // Middlewares PreRequest
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
-    // Router
+    // Public Router
+    app.use(basePathV1, PublicRouter);
+
+    // Securized Router
+    app.use(JWTAuth)
     app.use(basePathV1, Router);
+
+    // Middlewares PostRequest
+    app.use(Recovery);
 
     // Database
     createConnection();
