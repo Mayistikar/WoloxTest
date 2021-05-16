@@ -4,7 +4,7 @@ const JWTGet = (user: any) => {
   const secret = process.env.JWT;
   const oneHour = 3600;
   const nowSeconds = Math.round(Date.now() / 1000);
-  return jwt.sign({ sub: user.id, name: `${user.name} ${user.surname}`, iat: nowSeconds+oneHour }, secret);
+  return jwt.sign({ sub: user.Id, name: `${user.Name} ${user.Surname}`, iat: nowSeconds+oneHour }, secret);
 }
 
 const JWTValidate = (token: string): boolean => {

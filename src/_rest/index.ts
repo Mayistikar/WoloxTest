@@ -11,6 +11,9 @@ const port: Number = 3000;
 const basePathV1: string = '/api/v1';
 
 try {
+    // Database
+    createConnection();
+
     // Middlewares PreRequest
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
@@ -18,16 +21,14 @@ try {
     // Public Router
     app.use(basePathV1, PublicRouter);
 
-    // Securized Router
+    // Private Router
     app.use(JWTAuth)
     app.use(basePathV1, Router);
 
     // Middlewares PostRequest
     app.use(Recovery);
 
-    // Database
-    createConnection();
-
+    // Run
     app.listen(port, (): void => {
         console.log(`Connected successfully on port ${port}`);
     });

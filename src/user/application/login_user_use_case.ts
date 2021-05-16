@@ -1,13 +1,13 @@
 import { DecodeBase64, GetBase64 } from "../../_shared/security/encode_decode";
 import { ValidatePassword } from '../../_shared/security/hash_pass';
 import { JWTGet } from "../../_shared/security/jwt";
-import { FindUserRepository } from "../domain/repositories/find_user_repository";
+import { UserRepository } from "../domain/repositories/user_repository";
 
 class LoginUserUseCase {
-  FindUserRepository: FindUserRepository
+  UserRepository: UserRepository
 
-  constructor(findUserRepository: FindUserRepository) {
-    this.FindUserRepository = findUserRepository;
+  constructor(userRepository: UserRepository) {
+    this.UserRepository = userRepository;
   }
 
   async Login(basicAuth: string) {
@@ -16,14 +16,14 @@ class LoginUserUseCase {
       const username = credentials.split(':')[0];
       const password = credentials.split(':')[1];
   
-      const user = await this.FindUserRepository.FindByUsername(username);
+      const user = await this.UserRepository.FindByUsername(username);
       if (!user) throw new Error('invalid username or password');
 
-      const isValidUser = await ValidatePassword(password, user.password);
+      const isValidUser = await ValidatePassword(password, user.Password);
       if (!isValidUser) throw new Error('invalid username or password');
 
       const token = JWTGet(user);
-      return { token };
+      return token;
     } catch (error) {
       throw new Error(error);
     }
