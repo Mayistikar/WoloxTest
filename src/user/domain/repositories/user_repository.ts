@@ -1,7 +1,9 @@
-import { User } from '../models/user'
+import { User } from "../models/user";
 
 interface UserRepository {
-  FindAll(): User[]
+  AddOne(user: User): Promise<User>
+  FindAll(): Promise<User[]>
+  FindByUsername(username: string): Promise<User>
 }
 
 export { UserRepository }

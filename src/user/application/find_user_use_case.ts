@@ -4,11 +4,15 @@ class FindUserUseCase {
   UserRepository: UserRepository;
   
   constructor(userRepository: UserRepository) {
-    this.UserRepository = userRepository
+    this.UserRepository = userRepository;
   }
 
-  GetAll() {
+  FindAll() {
     return this.UserRepository.FindAll();
+  }
+
+  FindByUsername(username: string) {
+    return this.UserRepository.FindByUsername(username);
   }
 
 }

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import { FindUserUseCase } from '../../application/find_user_use_case';
 
-class UserHandler {
+class FindUserHandler {
   FindUserUseCase: FindUserUseCase
 
   constructor(findUserUseCase: FindUserUseCase) {
@@ -10,9 +10,9 @@ class UserHandler {
   }
 
   FindAll = async (req: Request, res: Response): Promise<Response> => {
-    const users = this.FindUserUseCase.GetAll();
+    const users = this.FindUserUseCase.FindAll();
     return res.status(200).json(users);
   }
 }
 
-export { UserHandler }
+export { FindUserHandler }
