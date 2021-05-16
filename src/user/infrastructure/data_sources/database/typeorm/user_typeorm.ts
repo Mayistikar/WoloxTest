@@ -13,6 +13,10 @@ class UserTypeormRepository {
     return getRepository(User).find();
   }
 
+  async FindById(Id: number): Promise<any> {
+    return getRepository(User).findOne({ Id });
+  } 
+
   async FindByUsername(Username: string): Promise<any> {
     return getRepository(User).findOne({ Username });
   }

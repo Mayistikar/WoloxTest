@@ -1,4 +1,4 @@
-import { Coin } from './coin'
+import { Coin } from '../../../coin/domain/models/coin'
 
 class User {
   Name: string

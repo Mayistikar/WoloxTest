@@ -1,6 +1,6 @@
 import { DecodeBase64, GetBase64 } from "../../_shared/security/encode_decode";
 import { ValidatePassword } from '../../_shared/security/hash_pass';
-import { JWTGet } from "../../_shared/security/jwt";
+import { JWTBuild } from "../../_shared/security/jwt";
 import { UserRepository } from "../domain/repositories/user_repository";
 
 class LoginUserUseCase {
@@ -22,7 +22,7 @@ class LoginUserUseCase {
       const isValidUser = await ValidatePassword(password, user.Password);
       if (!isValidUser) throw new Error('invalid username or password');
 
-      const token = JWTGet(user);
+      const token = JWTBuild(user);
       return token;
     } catch (error) {
       throw new Error(error);
