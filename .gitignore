@@ -110,4 +110,4 @@ ormconfig.js
 .vscode/
 
 # Volume Files
-db/*
+!db/*
