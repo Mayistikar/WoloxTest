@@ -1,7 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Coin } from "../../../../../../coin/infrastructure/data_source/database/typeorm/entities/coin_typeorm_entity";
+import { UserGateway } from "../../../../../domain/models/gateways/user_gateway";
 
 @Entity()
-class User {
+class User implements UserGateway {
 
     @PrimaryGeneratedColumn()
     Id: number;
@@ -20,6 +22,9 @@ class User {
 
     @Column()
     Currency: string;
+
+    @OneToMany(() => Coin, coin => coin.User)
+    Coins: Coin[];
 }
 
 export { User };

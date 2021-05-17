@@ -1,4 +1,4 @@
-import { Coin } from './coin'
+import { Coin } from '../../../coin/domain/models/coin'
 
 class User {
   Name: string
@@ -7,7 +7,6 @@ class User {
   Password: string
   Currency: string
   Coins: Coin[]
-  constructor() {}
 }
 
 class UserBuilder {

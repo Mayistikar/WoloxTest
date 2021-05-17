@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { DTOValidation } from '../../../_shared/security/dto_validator';
 
 import { CreateUserUseCase } from '../../application/create_user_use_case';
-import { UserDto } from './dtos/user_dto';
+import { UserDTO } from './dtos/user_dto';
 
 class CreateUserHandler {
   CreateUserUseCase: CreateUserUseCase
@@ -13,7 +13,7 @@ class CreateUserHandler {
 
   AddOne = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
     try {
-      const userDto = new UserDto(req.body);
+      const userDto = new UserDTO(req.body);
 
       const requestErrors = await DTOValidation(userDto);
       if (requestErrors.length) {

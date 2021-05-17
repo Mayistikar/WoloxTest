@@ -5,15 +5,22 @@ class UserTypeormRepository {
   
   constructor() {}
 
-  async AddOne(user: any): Promise<any> {
+  async AddOne(user: User): Promise<User> {
     return getRepository(User).save(user);
   }
 
-  async FindAll(): Promise<any[]> {    
+  async FindAll(): Promise<User[]> {    
     return getRepository(User).find();
   }
 
-  async FindByUsername(Username: string): Promise<any> {
+  async FindById(Id: number): Promise<User> {
+    return getRepository(User).findOne({
+      where: { Id },
+      relations: [ "Coins" ]
+    });
+  } 
+
+  async FindByUsername(Username: string): Promise<User> {
     return getRepository(User).findOne({ Username });
   }
 }

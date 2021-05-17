@@ -24,6 +24,8 @@
     "base-64": "^1.0.0",
     "bcrypt": "^5.0.1",
     "class-validator": "^0.13.1",
+    "coingecko-api": "^1.0.10",
+    "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",

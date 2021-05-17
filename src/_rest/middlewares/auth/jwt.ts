@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { JWTValidate } from "../../../_shared/security/jwt"
+import { JWTOutOfDate, JWTValidate } from "../../../_shared/security/jwt"
 
 const JWTAuth = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -11,10 +11,13 @@ const JWTAuth = (req: Request, res: Response, next: NextFunction) => {
     const isJwtValid = JWTValidate(token);
     if (!isJwtValid) throw new Error('Unauthorized');    
 
+    const isJWTOutOfDate = JWTOutOfDate(token);
+    if (!isJWTOutOfDate) throw new Error('Unauthorized, session ended');
+
     next();
   } catch (error) {
     console.error({ error });
-    return res.status(401).json({ code: '001', data: null, message: 'Unauthorized' })
+    return res.status(401).json({ code: '001', data: null, message: error.message, errors: [error.message] })
   }
 }
 
