@@ -1,11 +1,12 @@
 import { CoinGateway } from "./gateways/coin_gateway"
 
 class Coin implements CoinGateway {
+  UIID: string
   Symbol: string
   Price: string
   Name: string
   Image: string
-  UpdatedAt: string
+  UpdatedAt: string  
 }
 
 class CoinBuilder {

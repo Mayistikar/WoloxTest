@@ -1,6 +1,6 @@
 import { MinLength, IsNotEmpty } from 'class-validator';
 
-class UserDto {
+class UserDTO {
   Name: string
   Surname: string
 
@@ -22,4 +22,4 @@ class UserDto {
   }
 }
 
-export { UserDto }  
+export { UserDTO }  

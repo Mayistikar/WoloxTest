@@ -1,4 +1,3 @@
-import { CurrencyRepository } from "../../currency/domain/repositories/currency_repository";
 import { UserRepository } from "../../user/domain/repositories/user_repository";
 import { Coin } from "../domain/models/coin";
 import { CoinRepository } from "../domain/repositories/coin_repository";
@@ -28,7 +27,7 @@ class FindCoinUseCase {
     
   }
 
-  async FindAllUserCurrency(userId: number): Promise<Coin[]> {
+  async FindAllUserCurrency(userId: number, filters: any): Promise<Coin[]> {
     try {
       const isAvailable = await this.CoinRepository.Ping();
       if (!isAvailable) throw new Error('Coin Gecko Api is unavailable');
@@ -36,7 +35,7 @@ class FindCoinUseCase {
       const user = await this.UserRepository.FindById(userId);
       if (!user) throw new Error(`UserId: ${userId} unavailable`);
 
-      return this.CoinRepository.FindAllUserCurrency(user.Currency);
+      return this.CoinRepository.FindAllUserCurrency(user.Currency, filters);
     } catch (error) {
       console.error({ error });
       throw error;

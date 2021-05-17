@@ -2,12 +2,14 @@ import express, { Application } from "express";
 import{ createConnection }from"typeorm";
 import { JWTAuth } from "./middlewares/auth/jwt";
 import { Recovery } from "./middlewares/recovery/recovery";
+import dotenv from 'dotenv';
 
 import { Router, PublicRouter } from './router'
 
 // Application
+dotenv.config();
 const app: Application = express();
-const port: Number = 3000;
+const port: Number = Number.parseInt(process.env.PORT);
 const basePathV1: string = '/api/v1';
 
 try {

@@ -108,3 +108,6 @@ ormconfig.js
 
 # VS Debug
 .vscode/
+
+# Volume Files
+db/*

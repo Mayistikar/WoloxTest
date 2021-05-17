@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { JWTGet } from "../../../_shared/security/jwt";
 import { FindCoinUseCase } from "../../application/find_coin_use_case";
-import { Coin } from "../../domain/models/coin";
 
 class FindCoinHandler {
   
@@ -14,14 +13,14 @@ class FindCoinHandler {
   FindAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const token = req.header('authorization');
+      const { page } = req.query;      
       const jwt = JWTGet(token);
-      const coins = await this.FindCoinUseCase.FindAllUserCurrency(jwt.sub);
+      const coins = await this.FindCoinUseCase.FindAllUserCurrency(jwt.sub, { page: page.toString() });
       return res.status(200).json({ code: null, message: 'Success', data: coins, errors: [] })
     } catch (error) {
       console.error({ error });
       next(error);
     }
-    
   }
 }
 

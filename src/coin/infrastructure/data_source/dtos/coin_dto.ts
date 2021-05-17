@@ -1,12 +1,14 @@
+import { User } from "../../../../user/infrastructure/data_sources/database/typeorm/entities/user_typeorm_entity";
 import { CoinGateway } from "../../../domain/models/gateways/coin_gateway";
 
 class CoinDTO implements CoinGateway {
+  UIID: string;
   Image: string;
   Name: string;
   Price: string;
   Symbol: string;
   UpdatedAt: string;
-  tesxt: string;
+  User: User;
 }
 
 class CoinDTOBuilder {
@@ -19,6 +21,11 @@ class CoinDTOBuilder {
     this._coinDTO.Symbol = '';
     this._coinDTO.UpdatedAt = '';
   }
+
+  UIID(UIID: string): CoinDTOBuilder {
+    this._coinDTO.UIID = UIID;
+    return this;
+  };
 
   Image(Image: string): CoinDTOBuilder {
     this._coinDTO.Image = Image;

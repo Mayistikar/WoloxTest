@@ -7,7 +7,6 @@ class User {
   Password: string
   Currency: string
   Coins: Coin[]
-  constructor() {}
 }
 
 class UserBuilder {
