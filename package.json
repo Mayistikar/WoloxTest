@@ -2,9 +2,10 @@
   "name": "woloxtest",
   "version": "1.0.0",
   "description": "Wolox Code Test",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
-    "test": "npm run test"
+    "start": "ts-node-dev ./src/_rest/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,23 @@
   },
   "homepage": "https://github.com/Mayistikar/WoloxTest#readme",
   "dependencies": {
+    "base-64": "^1.0.0",
+    "bcrypt": "^5.0.1",
+    "class-validator": "^0.13.1",
+    "coingecko-api": "^1.0.10",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.32",
+    "utf8": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/node": "^15.0.2",
+    "ts-node-dev": "^1.1.6",
+    "tslint": "^5.12.1",
     "typescript": "^4.2.4"
   }
 }

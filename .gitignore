@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# TypeOrm Config
+ormconfig.js
+
+# VS Debug
+.vscode/
+
+# Volume Files
+db/*

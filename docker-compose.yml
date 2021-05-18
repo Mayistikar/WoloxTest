@@ -1,0 +1,41 @@
+version: "3"
+services:
+  wolox:
+    depends_on:
+      - wolox-mysql
+    container_name: WoloxTest
+    build:
+      context: ../WoloxTest
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/usr/src/app"
+    command: /bin/sh -c "npm run start"
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    environment:
+      PORT: 3000
+      DB_HOST: wolox-mysql
+    networks:
+      - default
+  wolox-mysql:
+    image: mysql:5.7
+    volumes:
+      - ./db:/var/lib/mysql
+    restart: always
+    expose:
+      - 3306
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: wolox
+      MYSQL_DATABASE: wolox
+      MYSQL_USER: wolox
+      MYSQL_PASSWORD: wolox
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
