@@ -6,6 +6,7 @@ interface CoinRepository {
   FindAll(): Promise<Coin[]>;
   FindAllUserCurrency(currency: string, filters: any): Promise<Coin[]>;
   FindByID(coinID: string): Promise<Coin>;
+  FindByUIIDs(coinIDs: string[], currency: string): Promise<any[]>;  
 }
 
 export { CoinRepository }

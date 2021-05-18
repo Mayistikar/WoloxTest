@@ -1,6 +1,5 @@
 import { CoinRepository } from "../domain/repositories/coin_repository";
 import { UserRepository } from "../../user/domain/repositories/user_repository";
-import { CoinBuilder } from "../domain/models/coin";
 
 class AddCoinUseCase {  
   CoinRepository: CoinRepository;
@@ -24,7 +23,7 @@ class AddCoinUseCase {
 
       const coinDB = await this.CoinRepository.Add(coin);
 
-      user.Coins.push(coinDB);
+      user.Coins?.push(coinDB);
       const data = await this.UserRepository.AddOne(user);
       
       return coin;

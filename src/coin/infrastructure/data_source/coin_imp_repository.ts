@@ -31,6 +31,10 @@ class CoinImpRepository {
   async FindByID(coinID: string): Promise<CoinDTO> {
     return this.CoinGeckoSDK.FindByID(coinID);
   }
+
+  async FindByUIIDs(coinIDs: string[], currency: string): Promise<CoinDTO[]> {
+    return this.CoinGeckoSDK.FindByUIIDs(coinIDs, currency);
+  }
 }
 
 export { CoinImpRepository }

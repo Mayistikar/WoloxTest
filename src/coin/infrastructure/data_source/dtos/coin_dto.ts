@@ -8,6 +8,7 @@ class CoinDTO implements CoinGateway {
   Price: string;
   Symbol: string;
   UpdatedAt: string;
+  MarketPlace: any[];
   User: User;
 }
 
@@ -49,6 +50,11 @@ class CoinDTOBuilder {
 
   UpdatedAt(UpdatedAt: string): CoinDTOBuilder {
     this._coinDTO.UpdatedAt = UpdatedAt;
+    return this;
+  }
+
+  MarketPlace(MarketPlace: any[]): CoinDTOBuilder {
+    this._coinDTO.MarketPlace = MarketPlace;
     return this;
   }
  
