@@ -1,0 +1,4694 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Wolox",
+    "contact": {}
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Get Users",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "GetUsers",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "Create User",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "CreateUser",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CreateUserSuccess"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": null,
+                "message": null,
+                "data": {
+                  "Name": "Anderson",
+                  "Surname": "Rodriguez",
+                  "Username": "Andy",
+                  "Password": "$2b$10$AySG5nRyqjc2Jx3MGKSLGO6XeShYBCjDGtdqVL0LyhbeqlLDQvP4y",
+                  "Currency": "usd",
+                  "Id": 2
+                },
+                "errors": null
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "207"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"cf-i2Wtd84KhdIdN6bTdYjDjH+6yvM\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Sun, 16 May 2021 00:40:53 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/CreateUserError1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": "002",
+                "message": "Bad Request",
+                "data": null,
+                "errors": [
+                  "Name must be a string "
+                ]
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "86"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"56-2tvBmUk4M3mGHQ8zXlGCxJXefus\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 May 2021 04:45:36 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Login",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Basic {Auth}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LoginSuccess"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJBbmRlcnNvbiBSb2RyaWd1ZXoiLCJpYXQiOjE2MjExNDQ5Mzd9.5RfC6l0UScOyoLQqCYMG8ymcTi8e-k31ebgJ05Ck7io"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "165"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"a5-jlIibtimAQlVAbNBShG4dgSFiX8\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Sun, 16 May 2021 05:02:17 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorLogin1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": "000",
+                "data": null,
+                "message": "Error: invalid username or password"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "74"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"4a-5pOFrSi2qb4sNs1KKXjtlmhNzwY\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 May 2021 04:42:14 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/coins": {
+      "get": {
+        "summary": "Get Coins",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "GetCoins",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/GetCoinsUnauthorized1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": "001",
+                "data": null,
+                "message": "Unauthorized, session ended",
+                "errors": [
+                  "Unauthorized, session ended"
+                ]
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "107"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"6b-/siiDTIU7xssDJJX7rdfaK4bjro\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 May 2021 04:46:57 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetCoinsSuccess"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": null,
+                "message": "Success",
+                "data": [
+                  {
+                    "Name": "Metadium",
+                    "Price": 0.127743,
+                    "Symbol": "meta",
+                    "UpdatedAt": "2021-05-18T04:43:28.934Z",
+                    "UIID": "metadium"
+                  },
+                  {
+                    "Name": "Kin",
+                    "Price": 0.00013423,
+                    "Symbol": "kin",
+                    "UpdatedAt": "2021-05-18T04:48:05.774Z",
+                    "UIID": "kin"
+                  },
+                  {
+                    "Name": "Wrapped NXM",
+                    "Price": 98.17,
+                    "Symbol": "wnxm",
+                    "UpdatedAt": "2021-05-18T04:47:34.383Z",
+                    "UIID": "wrapped-nxm"
+                  },
+                  {
+                    "Name": "Atari",
+                    "Price": 0.240748,
+                    "Symbol": "atri",
+                    "UpdatedAt": "2021-05-18T04:45:44.876Z",
+                    "UIID": "atari"
+                  },
+                  {
+                    "Name": "Everipedia",
+                    "Price": 0.01833911,
+                    "Symbol": "iq",
+                    "UpdatedAt": "2021-05-18T04:47:35.047Z",
+                    "UIID": "everipedia"
+                  },
+                  {
+                    "Name": "Reddcoin",
+                    "Price": 0.00667197,
+                    "Symbol": "rdd",
+                    "UpdatedAt": "2021-05-18T04:43:06.058Z",
+                    "UIID": "reddcoin"
+                  },
+                  {
+                    "Name": "DeFiPulse Index",
+                    "Price": 589.58,
+                    "Symbol": "dpi",
+                    "UpdatedAt": "2021-05-18T04:48:04.246Z",
+                    "UIID": "defipulse-index"
+                  },
+                  {
+                    "Name": "Secret",
+                    "Price": 2.85,
+                    "Symbol": "scrt",
+                    "UpdatedAt": "2021-05-18T04:46:22.912Z",
+                    "UIID": "secret"
+                  },
+                  {
+                    "Name": "Metal",
+                    "Price": 3.1,
+                    "Symbol": "mtl",
+                    "UpdatedAt": "2021-05-18T04:48:00.282Z",
+                    "UIID": "metal"
+                  },
+                  {
+                    "Name": "Syscoin",
+                    "Price": 0.323196,
+                    "Symbol": "sys",
+                    "UpdatedAt": "2021-05-18T04:46:24.699Z",
+                    "UIID": "syscoin"
+                  },
+                  {
+                    "Name": "KardiaChain",
+                    "Price": 0.083059,
+                    "Symbol": "kai",
+                    "UpdatedAt": "2021-05-18T04:47:27.005Z",
+                    "UIID": "kardiachain"
+                  },
+                  {
+                    "Name": "Constellation",
+                    "Price": 0.08109,
+                    "Symbol": "dag",
+                    "UpdatedAt": "2021-05-18T04:46:31.705Z",
+                    "UIID": "constellation-labs"
+                  },
+                  {
+                    "Name": "Render Token",
+                    "Price": 1.25,
+                    "Symbol": "rndr",
+                    "UpdatedAt": "2021-05-18T04:48:44.905Z",
+                    "UIID": "render-token"
+                  },
+                  {
+                    "Name": "SONM",
+                    "Price": 0.441992,
+                    "Symbol": "snm",
+                    "UpdatedAt": "2021-05-18T04:38:19.752Z",
+                    "UIID": "sonm"
+                  },
+                  {
+                    "Name": "district0x",
+                    "Price": 0.25856,
+                    "Symbol": "dnt",
+                    "UpdatedAt": "2021-05-18T04:47:38.905Z",
+                    "UIID": "district0x"
+                  },
+                  {
+                    "Name": "c0x",
+                    "Price": 0.03150022,
+                    "Symbol": "czrx",
+                    "UpdatedAt": "2021-05-18T04:11:29.91Z",
+                    "UIID": "compound-0x"
+                  },
+                  {
+                    "Name": "Bounce",
+                    "Price": 43.19,
+                    "Symbol": "auction",
+                    "UpdatedAt": "2021-05-18T04:47:49.536Z",
+                    "UIID": "auction"
+                  },
+                  {
+                    "Name": "Safemars",
+                    "Price": 4.8E-07,
+                    "Symbol": "safemars",
+                    "UpdatedAt": "2021-05-18T04:48:20.444Z",
+                    "UIID": "safemars"
+                  },
+                  {
+                    "Name": "OriginTrail",
+                    "Price": 0.52303,
+                    "Symbol": "trac",
+                    "UpdatedAt": "2021-05-18T04:46:29.538Z",
+                    "UIID": "origintrail"
+                  },
+                  {
+                    "Name": "Divi",
+                    "Price": 0.080052,
+                    "Symbol": "divi",
+                    "UpdatedAt": "2021-05-18T04:45:06.463Z",
+                    "UIID": "divi"
+                  },
+                  {
+                    "Name": "Handshake",
+                    "Price": 0.472863,
+                    "Symbol": "hns",
+                    "UpdatedAt": "2021-05-18T04:47:33.011Z",
+                    "UIID": "handshake"
+                  },
+                  {
+                    "Name": "Verasity",
+                    "Price": 0.02790945,
+                    "Symbol": "vra",
+                    "UpdatedAt": "2021-05-18T04:45:04.097Z",
+                    "UIID": "verasity"
+                  },
+                  {
+                    "Name": "MX Token",
+                    "Price": 1.7,
+                    "Symbol": "mx",
+                    "UpdatedAt": "2021-05-18T04:46:34.483Z",
+                    "UIID": "mx-token"
+                  },
+                  {
+                    "Name": "Aion",
+                    "Price": 0.364635,
+                    "Symbol": "aion",
+                    "UpdatedAt": "2021-05-18T04:46:17.739Z",
+                    "UIID": "aion"
+                  },
+                  {
+                    "Name": "Hive",
+                    "Price": 0.480708,
+                    "Symbol": "hive",
+                    "UpdatedAt": "2021-05-18T04:48:28.302Z",
+                    "UIID": "hive"
+                  },
+                  {
+                    "Name": "Hathor",
+                    "Price": 0.940413,
+                    "Symbol": "htr",
+                    "UpdatedAt": "2021-05-18T04:46:26.13Z",
+                    "UIID": "hathor"
+                  },
+                  {
+                    "Name": "DAO Maker",
+                    "Price": 4.97,
+                    "Symbol": "dao",
+                    "UpdatedAt": "2021-05-18T04:48:10.599Z",
+                    "UIID": "dao-maker"
+                  },
+                  {
+                    "Name": "RSK Infrastructure Framework",
+                    "Price": 0.240961,
+                    "Symbol": "rif",
+                    "UpdatedAt": "2021-05-18T04:47:22.177Z",
+                    "UIID": "rif-token"
+                  },
+                  {
+                    "Name": "Linear",
+                    "Price": 0.070565,
+                    "Symbol": "lina",
+                    "UpdatedAt": "2021-05-18T04:48:13.484Z",
+                    "UIID": "linear"
+                  },
+                  {
+                    "Name": "aelf",
+                    "Price": 0.366741,
+                    "Symbol": "elf",
+                    "UpdatedAt": "2021-05-18T04:47:50.148Z",
+                    "UIID": "aelf"
+                  },
+                  {
+                    "Name": "Oasis Network",
+                    "Price": 0.115026,
+                    "Symbol": "rose",
+                    "UpdatedAt": "2021-05-18T04:48:19.407Z",
+                    "UIID": "oasis-network"
+                  },
+                  {
+                    "Name": "CRYPTO20",
+                    "Price": 5.11,
+                    "Symbol": "c20",
+                    "UpdatedAt": "2021-05-18T04:46:45.963Z",
+                    "UIID": "crypto20"
+                  },
+                  {
+                    "Name": "inSure DeFi",
+                    "Price": 0.00625865,
+                    "Symbol": "sure",
+                    "UpdatedAt": "2021-05-18T04:34:30.249Z",
+                    "UIID": "insure"
+                  },
+                  {
+                    "Name": "Function X",
+                    "Price": 0.615574,
+                    "Symbol": "fx",
+                    "UpdatedAt": "2021-05-18T04:48:25.608Z",
+                    "UIID": "fx-coin"
+                  },
+                  {
+                    "Name": "SuperFarm",
+                    "Price": 1.59,
+                    "Symbol": "super",
+                    "UpdatedAt": "2021-05-18T04:47:47.712Z",
+                    "UIID": "superfarm"
+                  },
+                  {
+                    "Name": "PAID Network",
+                    "Price": 1.8,
+                    "Symbol": "paid",
+                    "UpdatedAt": "2021-05-18T04:48:24.615Z",
+                    "UIID": "paid-network"
+                  },
+                  {
+                    "Name": "GivingToServices",
+                    "Price": 0.03149372,
+                    "Symbol": "svcs",
+                    "UpdatedAt": "2021-05-18T04:43:49.39Z",
+                    "UIID": "givingtoservices"
+                  },
+                  {
+                    "Name": "LockTrip",
+                    "Price": 9.76,
+                    "Symbol": "loc",
+                    "UpdatedAt": "2021-05-18T04:33:46.242Z",
+                    "UIID": "lockchain"
+                  },
+                  {
+                    "Name": "Gas",
+                    "Price": 11.59,
+                    "Symbol": "gas",
+                    "UpdatedAt": "2021-05-18T04:48:31.175Z",
+                    "UIID": "gas"
+                  },
+                  {
+                    "Name": "Tether Gold",
+                    "Price": 1888.86,
+                    "Symbol": "xaut",
+                    "UpdatedAt": "2021-05-18T04:48:10.702Z",
+                    "UIID": "tether-gold"
+                  },
+                  {
+                    "Name": "Hydra",
+                    "Price": 46.2,
+                    "Symbol": "hydra",
+                    "UpdatedAt": "2021-05-18T04:45:33.958Z",
+                    "UIID": "hydra"
+                  },
+                  {
+                    "Name": "Mask Network",
+                    "Price": 12.25,
+                    "Symbol": "mask",
+                    "UpdatedAt": "2021-05-18T04:48:09.542Z",
+                    "UIID": "mask-network"
+                  },
+                  {
+                    "Name": "TomoChain",
+                    "Price": 1.93,
+                    "Symbol": "tomo",
+                    "UpdatedAt": "2021-05-18T04:47:41.031Z",
+                    "UIID": "tomochain"
+                  },
+                  {
+                    "Name": "Trustswap",
+                    "Price": 2.4,
+                    "Symbol": "swap",
+                    "UpdatedAt": "2021-05-18T04:47:22.461Z",
+                    "UIID": "trustswap"
+                  },
+                  {
+                    "Name": "QuarkChain",
+                    "Price": 0.0236074,
+                    "Symbol": "qkc",
+                    "UpdatedAt": "2021-05-18T04:48:40.001Z",
+                    "UIID": "quark-chain"
+                  },
+                  {
+                    "Name": "Hxro",
+                    "Price": 0.611833,
+                    "Symbol": "hxro",
+                    "UpdatedAt": "2021-05-18T04:48:09.786Z",
+                    "UIID": "hxro"
+                  },
+                  {
+                    "Name": "Tellor",
+                    "Price": 90.88,
+                    "Symbol": "trb",
+                    "UpdatedAt": "2021-05-18T04:47:21.227Z",
+                    "UIID": "tellor"
+                  },
+                  {
+                    "Name": "DIA",
+                    "Price": 3.68,
+                    "Symbol": "DIA",
+                    "UpdatedAt": "2021-05-18T04:47:35.489Z",
+                    "UIID": "dia-data"
+                  },
+                  {
+                    "Name": "PAC Protocol",
+                    "Price": 0.01110721,
+                    "Symbol": "pac",
+                    "UpdatedAt": "2021-05-18T04:44:26.234Z",
+                    "UIID": "paccoin"
+                  },
+                  {
+                    "Name": "Power Ledger",
+                    "Price": 0.348148,
+                    "Symbol": "powr",
+                    "UpdatedAt": "2021-05-18T04:47:26.64Z",
+                    "UIID": "power-ledger"
+                  },
+                  {
+                    "Name": "NuCypher",
+                    "Price": 0.429771,
+                    "Symbol": "nu",
+                    "UpdatedAt": "2021-05-18T04:48:42.908Z",
+                    "UIID": "nucypher"
+                  },
+                  {
+                    "Name": "JUST",
+                    "Price": 0.103021,
+                    "Symbol": "jst",
+                    "UpdatedAt": "2021-05-18T04:48:30.09Z",
+                    "UIID": "just"
+                  },
+                  {
+                    "Name": "Firo",
+                    "Price": 12.26,
+                    "Symbol": "firo",
+                    "UpdatedAt": "2021-05-18T04:47:34.561Z",
+                    "UIID": "zcoin"
+                  },
+                  {
+                    "Name": "ankrETH",
+                    "Price": 3197.34,
+                    "Symbol": "aeth",
+                    "UpdatedAt": "2021-05-18T04:44:15.675Z",
+                    "UIID": "ankreth"
+                  },
+                  {
+                    "Name": "cBAT",
+                    "Price": 0.02232585,
+                    "Symbol": "cbat",
+                    "UpdatedAt": "2021-05-18T04:03:35.483Z",
+                    "UIID": "compound-basic-attention-token"
+                  },
+                  {
+                    "Name": "e-Radix",
+                    "Price": 0.126668,
+                    "Symbol": "exrd",
+                    "UpdatedAt": "2021-05-18T04:47:22.209Z",
+                    "UIID": "e-radix"
+                  },
+                  {
+                    "Name": "Edgeware",
+                    "Price": 0.02287236,
+                    "Symbol": "edg",
+                    "UpdatedAt": "2021-05-18T04:47:36.167Z",
+                    "UIID": "edgeware"
+                  },
+                  {
+                    "Name": "Chromia",
+                    "Price": 0.312514,
+                    "Symbol": "chr",
+                    "UpdatedAt": "2021-05-18T04:48:34.033Z",
+                    "UIID": "chromaway"
+                  },
+                  {
+                    "Name": "Ethernity Chain",
+                    "Price": 12.41,
+                    "Symbol": "ern",
+                    "UpdatedAt": "2021-05-18T04:46:13.101Z",
+                    "UIID": "ethernity-chain"
+                  },
+                  {
+                    "Name": "PARSIQ",
+                    "Price": 1.3,
+                    "Symbol": "prq",
+                    "UpdatedAt": "2021-05-18T04:48:43.304Z",
+                    "UIID": "parsiq"
+                  },
+                  {
+                    "Name": "USDP Stablecoin",
+                    "Price": 1.01,
+                    "Symbol": "usdp",
+                    "UpdatedAt": "2021-05-18T04:16:50.767Z",
+                    "UIID": "usdp"
+                  },
+                  {
+                    "Name": "CumRocket",
+                    "Price": 0.096937,
+                    "Symbol": "cummies",
+                    "UpdatedAt": "2021-05-18T04:45:26.859Z",
+                    "UIID": "cumrocket"
+                  },
+                  {
+                    "Name": "Quickswap",
+                    "Price": 851.98,
+                    "Symbol": "quick",
+                    "UpdatedAt": "2021-05-18T04:48:00.254Z",
+                    "UIID": "quick"
+                  },
+                  {
+                    "Name": "LUKSO Token",
+                    "Price": 8.96,
+                    "Symbol": "lyxe",
+                    "UpdatedAt": "2021-05-18T04:45:34.782Z",
+                    "UIID": "lukso-token"
+                  },
+                  {
+                    "Name": "Bytecoin",
+                    "Price": 0.00072384,
+                    "Symbol": "bcn",
+                    "UpdatedAt": "2021-05-18T04:46:24.51Z",
+                    "UIID": "bytecoin"
+                  },
+                  {
+                    "Name": "Crust Network",
+                    "Price": 75.4,
+                    "Symbol": "cru",
+                    "UpdatedAt": "2021-05-18T04:47:50.84Z",
+                    "UIID": "crust-network"
+                  },
+                  {
+                    "Name": "IRISnet",
+                    "Price": 0.13178,
+                    "Symbol": "iris",
+                    "UpdatedAt": "2021-05-18T04:47:26.872Z",
+                    "UIID": "iris-network"
+                  },
+                  {
+                    "Name": "Kleros",
+                    "Price": 0.249308,
+                    "Symbol": "pnk",
+                    "UpdatedAt": "2021-05-18T04:46:58.038Z",
+                    "UIID": "kleros"
+                  },
+                  {
+                    "Name": "UnFederalReserve",
+                    "Price": 0.404603,
+                    "Symbol": "ersdl",
+                    "UpdatedAt": "2021-05-18T04:46:12.342Z",
+                    "UIID": "unfederalreserve"
+                  },
+                  {
+                    "Name": "Cope",
+                    "Price": 8.05,
+                    "Symbol": "cope",
+                    "UpdatedAt": "2021-05-18T04:48:15.819Z",
+                    "UIID": "cope"
+                  },
+                  {
+                    "Name": "Tokenlon",
+                    "Price": 5.16,
+                    "Symbol": "lon",
+                    "UpdatedAt": "2021-05-18T04:48:10.923Z",
+                    "UIID": "tokenlon"
+                  },
+                  {
+                    "Name": "Rally",
+                    "Price": 0.865463,
+                    "Symbol": "rly",
+                    "UpdatedAt": "2021-05-18T04:48:08.947Z",
+                    "UIID": "rally-2"
+                  },
+                  {
+                    "Name": "Frax",
+                    "Price": 1.01,
+                    "Symbol": "frax",
+                    "UpdatedAt": "2021-05-18T04:48:26.088Z",
+                    "UIID": "frax"
+                  },
+                  {
+                    "Name": "Elastos",
+                    "Price": 6.52,
+                    "Symbol": "ela",
+                    "UpdatedAt": "2021-05-18T04:48:07.061Z",
+                    "UIID": "elastos"
+                  },
+                  {
+                    "Name": "Litentry",
+                    "Price": 6.89,
+                    "Symbol": "lit",
+                    "UpdatedAt": "2021-05-18T04:48:27.152Z",
+                    "UIID": "litentry"
+                  },
+                  {
+                    "Name": "BEAM",
+                    "Price": 1.38,
+                    "Symbol": "beam",
+                    "UpdatedAt": "2021-05-18T04:47:25.793Z",
+                    "UIID": "beam"
+                  },
+                  {
+                    "Name": "GNY",
+                    "Price": 0.705429,
+                    "Symbol": "gny",
+                    "UpdatedAt": "2021-05-18T04:35:12.2Z",
+                    "UIID": "gny"
+                  },
+                  {
+                    "Name": "CoinMetro",
+                    "Price": 0.40211,
+                    "Symbol": "xcm",
+                    "UpdatedAt": "2021-05-18T04:42:11.73Z",
+                    "UIID": "coinmetro"
+                  },
+                  {
+                    "Name": "Hifi Finance",
+                    "Price": 0.01299676,
+                    "Symbol": "mft",
+                    "UpdatedAt": "2021-05-18T04:46:45.886Z",
+                    "UIID": "mainframe"
+                  },
+                  {
+                    "Name": "Enzyme",
+                    "Price": 90.71,
+                    "Symbol": "mln",
+                    "UpdatedAt": "2021-05-18T04:46:24.543Z",
+                    "UIID": "melon"
+                  },
+                  {
+                    "Name": "Pancake Bunny",
+                    "Price": 234.97,
+                    "Symbol": "bunny",
+                    "UpdatedAt": "2021-05-18T04:48:27.77Z",
+                    "UIID": "pancake-bunny"
+                  },
+                  {
+                    "Name": "Cardstarter",
+                    "Price": 62.18,
+                    "Symbol": "cards",
+                    "UpdatedAt": "2021-05-18T04:45:08.872Z",
+                    "UIID": "cardstarter"
+                  },
+                  {
+                    "Name": "Nominex",
+                    "Price": 4.19,
+                    "Symbol": "nmx",
+                    "UpdatedAt": "2021-05-18T04:42:06.219Z",
+                    "UIID": "nominex"
+                  },
+                  {
+                    "Name": "ChainX",
+                    "Price": 11.56,
+                    "Symbol": "pcx",
+                    "UpdatedAt": "2021-05-18T04:47:31.346Z",
+                    "UIID": "chainx"
+                  },
+                  {
+                    "Name": "Smooth Love Potion",
+                    "Price": 0.278662,
+                    "Symbol": "slp",
+                    "UpdatedAt": "2021-05-18T04:48:03.371Z",
+                    "UIID": "smooth-love-potion"
+                  },
+                  {
+                    "Name": "LTO Network",
+                    "Price": 0.416185,
+                    "Symbol": "lto",
+                    "UpdatedAt": "2021-05-18T04:45:05.864Z",
+                    "UIID": "lto-network"
+                  },
+                  {
+                    "Name": "AdEx",
+                    "Price": 0.986365,
+                    "Symbol": "adx",
+                    "UpdatedAt": "2021-05-18T04:43:33.203Z",
+                    "UIID": "adex"
+                  },
+                  {
+                    "Name": "WaykiChain",
+                    "Price": 0.559228,
+                    "Symbol": "wicc",
+                    "UpdatedAt": "2021-05-18T04:47:36.648Z",
+                    "UIID": "waykichain"
+                  },
+                  {
+                    "Name": "Carry",
+                    "Price": 0.01342874,
+                    "Symbol": "cre",
+                    "UpdatedAt": "2021-05-18T04:48:26.378Z",
+                    "UIID": "carry"
+                  },
+                  {
+                    "Name": "Verus Coin",
+                    "Price": 1.74,
+                    "Symbol": "vrsc",
+                    "UpdatedAt": "2021-05-18T04:43:27.061Z",
+                    "UIID": "verus-coin"
+                  },
+                  {
+                    "Name": "API3",
+                    "Price": 5.26,
+                    "Symbol": "api3",
+                    "UpdatedAt": "2021-05-18T04:48:20.833Z",
+                    "UIID": "api3"
+                  },
+                  {
+                    "Name": "Gala",
+                    "Price": 0.01532164,
+                    "Symbol": "gala",
+                    "UpdatedAt": "2021-05-18T04:44:25.976Z",
+                    "UIID": "gala"
+                  },
+                  {
+                    "Name": "Alchemist",
+                    "Price": 110.25,
+                    "Symbol": "mist",
+                    "UpdatedAt": "2021-05-18T04:38:19.105Z",
+                    "UIID": "alchemist"
+                  },
+                  {
+                    "Name": "Unit Protocol",
+                    "Price": 0.02597905,
+                    "Symbol": "col",
+                    "UpdatedAt": "2021-05-17T08:30:39.651Z",
+                    "UIID": "unit-protocol"
+                  },
+                  {
+                    "Name": "Populous",
+                    "Price": 3.14,
+                    "Symbol": "ppt",
+                    "UpdatedAt": "2021-05-18T04:48:36.415Z",
+                    "UIID": "populous"
+                  },
+                  {
+                    "Name": "Zenon",
+                    "Price": 17.31,
+                    "Symbol": "znn",
+                    "UpdatedAt": "2021-05-18T04:44:35.571Z",
+                    "UIID": "zenon"
+                  },
+                  {
+                    "Name": "FUSION",
+                    "Price": 1.65,
+                    "Symbol": "fsn",
+                    "UpdatedAt": "2021-05-18T04:48:39.757Z",
+                    "UIID": "fsn"
+                  },
+                  {
+                    "Name": "Aeternity",
+                    "Price": 0.291871,
+                    "Symbol": "ae",
+                    "UpdatedAt": "2021-05-18T04:47:47.491Z",
+                    "UIID": "aeternity"
+                  },
+                  {
+                    "Name": "Lambda",
+                    "Price": 0.058988,
+                    "Symbol": "lamb",
+                    "UpdatedAt": "2021-05-18T04:48:24.698Z",
+                    "UIID": "lambda"
+                  },
+                  {
+                    "Name": "Bluzelle",
+                    "Price": 0.379421,
+                    "Symbol": "blz",
+                    "UpdatedAt": "2021-05-18T04:47:02.627Z",
+                    "UIID": "bluzelle"
+                  },
+                  {
+                    "Name": "Marlin",
+                    "Price": 0.142879,
+                    "Symbol": "pond",
+                    "UpdatedAt": "2021-05-18T04:47:20.876Z",
+                    "UIID": "marlin"
+                  },
+                  {
+                    "Name": "ETH 2x Flexible Leverage Index",
+                    "Price": 277.81,
+                    "Symbol": "ETH2x-FLI",
+                    "UpdatedAt": "2021-05-18T04:45:12.263Z",
+                    "UIID": "eth-2x-flexible-leverage-index"
+                  },
+                  {
+                    "Name": "RAMP",
+                    "Price": 0.393354,
+                    "Symbol": "ramp",
+                    "UpdatedAt": "2021-05-18T04:47:03.064Z",
+                    "UIID": "ramp"
+                  },
+                  {
+                    "Name": "BarnBridge",
+                    "Price": 43.42,
+                    "Symbol": "bond",
+                    "UpdatedAt": "2021-05-18T04:47:32.803Z",
+                    "UIID": "barnbridge"
+                  },
+                  {
+                    "Name": "Alpaca Finance",
+                    "Price": 1.39,
+                    "Symbol": "alpaca",
+                    "UpdatedAt": "2021-05-18T04:47:16.604Z",
+                    "UIID": "alpaca-finance"
+                  },
+                  {
+                    "Name": "WHALE",
+                    "Price": 19.07,
+                    "Symbol": "whale",
+                    "UpdatedAt": "2021-05-18T04:48:29.75Z",
+                    "UIID": "whale"
+                  },
+                  {
+                    "Name": "MAPS",
+                    "Price": 1.44,
+                    "Symbol": "maps",
+                    "UpdatedAt": "2021-05-18T04:48:16.415Z",
+                    "UIID": "maps"
+                  },
+                  {
+                    "Name": "Olympus",
+                    "Price": 478.46,
+                    "Symbol": "ohm",
+                    "UpdatedAt": "2021-05-18T04:48:46.617Z",
+                    "UIID": "olympus"
+                  },
+                  {
+                    "Name": "Akropolis",
+                    "Price": 0.03937961,
+                    "Symbol": "akro",
+                    "UpdatedAt": "2021-05-18T04:48:04.692Z",
+                    "UIID": "akropolis"
+                  },
+                  {
+                    "Name": "Unit Protocol New",
+                    "Price": 0.500638,
+                    "Symbol": "duck",
+                    "UpdatedAt": "2021-05-18T04:48:17.72Z",
+                    "UIID": "unit-protocol-duck"
+                  },
+                  {
+                    "Name": "WaultSwap",
+                    "Price": 0.094543,
+                    "Symbol": "wex",
+                    "UpdatedAt": "2021-05-18T04:42:38.279Z",
+                    "UIID": "waultswap"
+                  },
+                  {
+                    "Name": "DFI.money",
+                    "Price": 2640.07,
+                    "Symbol": "yfii",
+                    "UpdatedAt": "2021-05-18T04:48:13.958Z",
+                    "UIID": "yfii-finance"
+                  },
+                  {
+                    "Name": "Refinable",
+                    "Price": 1.52,
+                    "Symbol": "fine",
+                    "UpdatedAt": "2021-05-18T04:48:02.728Z",
+                    "UIID": "refinable"
+                  },
+                  {
+                    "Name": "Energi",
+                    "Price": 2.53,
+                    "Symbol": "nrg",
+                    "UpdatedAt": "2021-05-18T04:48:23.202Z",
+                    "UIID": "energi"
+                  },
+                  {
+                    "Name": "Efforce",
+                    "Price": 1.14,
+                    "Symbol": "wozx",
+                    "UpdatedAt": "2021-05-18T04:44:14.531Z",
+                    "UIID": "wozx"
+                  },
+                  {
+                    "Name": "Lido DAO",
+                    "Price": 3.65,
+                    "Symbol": "ldo",
+                    "UpdatedAt": "2021-05-18T04:45:47.62Z",
+                    "UIID": "lido-dao"
+                  },
+                  {
+                    "Name": "Vite",
+                    "Price": 0.166356,
+                    "Symbol": "vite",
+                    "UpdatedAt": "2021-05-18T04:46:59.004Z",
+                    "UIID": "vite"
+                  },
+                  {
+                    "Name": "ShareToken",
+                    "Price": 0.04202703,
+                    "Symbol": "shr",
+                    "UpdatedAt": "2021-05-18T04:47:39.325Z",
+                    "UIID": "sharering"
+                  },
+                  {
+                    "Name": "Kadena",
+                    "Price": 0.834279,
+                    "Symbol": "kda",
+                    "UpdatedAt": "2021-05-18T04:47:59.193Z",
+                    "UIID": "kadena"
+                  },
+                  {
+                    "Name": "DerivaDAO",
+                    "Price": 3.83,
+                    "Symbol": "ddx",
+                    "UpdatedAt": "2021-05-18T04:48:25.465Z",
+                    "UIID": "derivadao"
+                  },
+                  {
+                    "Name": "Earthcoin",
+                    "Price": 0.00776052,
+                    "Symbol": "eac",
+                    "UpdatedAt": "2021-05-18T04:48:03.862Z",
+                    "UIID": "earthcoin"
+                  },
+                  {
+                    "Name": "SparkPoint",
+                    "Price": 0.00919966,
+                    "Symbol": "srk",
+                    "UpdatedAt": "2021-05-18T04:47:49.397Z",
+                    "UIID": "sparkpoint"
+                  },
+                  {
+                    "Name": "Sora",
+                    "Price": 697.16,
+                    "Symbol": "xor",
+                    "UpdatedAt": "2021-05-18T04:48:17.598Z",
+                    "UIID": "sora"
+                  },
+                  {
+                    "Name": "PIVX",
+                    "Price": 1.51,
+                    "Symbol": "pivx",
+                    "UpdatedAt": "2021-05-18T04:46:20.378Z",
+                    "UIID": "pivx"
+                  },
+                  {
+                    "Name": "Nuls",
+                    "Price": 0.875056,
+                    "Symbol": "nuls",
+                    "UpdatedAt": "2021-05-18T04:47:19.735Z",
+                    "UIID": "nuls"
+                  },
+                  {
+                    "Name": "Nerve Finance",
+                    "Price": 3,
+                    "Symbol": "nrv",
+                    "UpdatedAt": "2021-05-18T04:48:28.941Z",
+                    "UIID": "nerve-finance"
+                  },
+                  {
+                    "Name": "DEA",
+                    "Price": 957.19,
+                    "Symbol": "dea",
+                    "UpdatedAt": "2021-05-18T04:42:56.022Z",
+                    "UIID": "dea"
+                  },
+                  {
+                    "Name": "Rari Governance Token",
+                    "Price": 11.14,
+                    "Symbol": "rgt",
+                    "UpdatedAt": "2021-05-18T04:47:44.557Z",
+                    "UIID": "rari-governance-token"
+                  },
+                  {
+                    "Name": "Hegic",
+                    "Price": 0.190232,
+                    "Symbol": "hegic",
+                    "UpdatedAt": "2021-05-18T04:46:56.208Z",
+                    "UIID": "hegic"
+                  },
+                  {
+                    "Name": "Anyswap",
+                    "Price": 5.55,
+                    "Symbol": "any",
+                    "UpdatedAt": "2021-05-18T04:46:40.153Z",
+                    "UIID": "anyswap"
+                  },
+                  {
+                    "Name": "bZx Protocol",
+                    "Price": 0.684422,
+                    "Symbol": "bzrx",
+                    "UpdatedAt": "2021-05-18T04:48:27.406Z",
+                    "UIID": "bzx-protocol"
+                  },
+                  {
+                    "Name": "ThunderCore",
+                    "Price": 0.01305038,
+                    "Symbol": "tt",
+                    "UpdatedAt": "2021-05-18T04:48:22.399Z",
+                    "UIID": "thunder-token"
+                  },
+                  {
+                    "Name": "Streamr",
+                    "Price": 0.135512,
+                    "Symbol": "data",
+                    "UpdatedAt": "2021-05-18T04:47:18.357Z",
+                    "UIID": "streamr-datacoin"
+                  },
+                  {
+                    "Name": "Cream",
+                    "Price": 128.46,
+                    "Symbol": "cream",
+                    "UpdatedAt": "2021-05-18T04:47:29.837Z",
+                    "UIID": "cream-2"
+                  },
+                  {
+                    "Name": "CertiK",
+                    "Price": 2.09,
+                    "Symbol": "ctk",
+                    "UpdatedAt": "2021-05-18T04:47:03.286Z",
+                    "UIID": "certik"
+                  },
+                  {
+                    "Name": "Beefy.Finance",
+                    "Price": 1227.58,
+                    "Symbol": "bifi",
+                    "UpdatedAt": "2021-05-18T04:48:06.809Z",
+                    "UIID": "beefy-finance"
+                  },
+                  {
+                    "Name": "Yuan Chain Coin",
+                    "Price": 0.02023645,
+                    "Symbol": "ycc",
+                    "UpdatedAt": "2021-05-18T04:41:09.193Z",
+                    "UIID": "yuan-chain-coin"
+                  },
+                  {
+                    "Name": "Shopping.io",
+                    "Price": 97.77,
+                    "Symbol": "spi",
+                    "UpdatedAt": "2021-05-18T04:46:28.648Z",
+                    "UIID": "shopping-io"
+                  },
+                  {
+                    "Name": "Ignis",
+                    "Price": 0.109325,
+                    "Symbol": "ignis",
+                    "UpdatedAt": "2021-05-18T04:48:34.11Z",
+                    "UIID": "ignis"
+                  },
+                  {
+                    "Name": "AllianceBlock",
+                    "Price": 0.513961,
+                    "Symbol": "albt",
+                    "UpdatedAt": "2021-05-18T04:46:08.765Z",
+                    "UIID": "allianceblock"
+                  },
+                  {
+                    "Name": "Bella Protocol",
+                    "Price": 2.89,
+                    "Symbol": "bel",
+                    "UpdatedAt": "2021-05-18T04:47:18.959Z",
+                    "UIID": "bella-protocol"
+                  },
+                  {
+                    "Name": "Loom Network (OLD)",
+                    "Price": 0.108926,
+                    "Symbol": "loomold",
+                    "UpdatedAt": "2021-05-18T04:47:28.849Z",
+                    "UIID": "loom-network"
+                  },
+                  {
+                    "Name": "MXC",
+                    "Price": 0.03707959,
+                    "Symbol": "mxc",
+                    "UpdatedAt": "2021-05-18T04:48:01.368Z",
+                    "UIID": "mxc"
+                  },
+                  {
+                    "Name": "Atletico Madrid Fan Token",
+                    "Price": 47.34,
+                    "Symbol": "atm",
+                    "UpdatedAt": "2021-05-18T04:44:16.304Z",
+                    "UIID": "atletico-madrid"
+                  },
+                  {
+                    "Name": "sEUR",
+                    "Price": 1.24,
+                    "Symbol": "seur",
+                    "UpdatedAt": "2021-05-18T04:46:58.159Z",
+                    "UIID": "seur"
+                  },
+                  {
+                    "Name": "Hacken Token",
+                    "Price": 0.271315,
+                    "Symbol": "hai",
+                    "UpdatedAt": "2021-05-18T04:47:23.733Z",
+                    "UIID": "hackenai"
+                  },
+                  {
+                    "Name": "SERO",
+                    "Price": 0.276332,
+                    "Symbol": "sero",
+                    "UpdatedAt": "2021-05-18T04:48:20.398Z",
+                    "UIID": "super-zero"
+                  },
+                  {
+                    "Name": "FC Barcelona Fan Token",
+                    "Price": 29.11,
+                    "Symbol": "bar",
+                    "UpdatedAt": "2021-05-18T04:46:12.494Z",
+                    "UIID": "fc-barcelona-fan-token"
+                  },
+                  {
+                    "Name": "Bonfida",
+                    "Price": 3.26,
+                    "Symbol": "fida",
+                    "UpdatedAt": "2021-05-18T04:48:08.828Z",
+                    "UIID": "bonfida"
+                  },
+                  {
+                    "Name": "Nexus",
+                    "Price": 1.23,
+                    "Symbol": "nxs",
+                    "UpdatedAt": "2021-05-18T04:47:27.058Z",
+                    "UIID": "nexus"
+                  },
+                  {
+                    "Name": "Pangolin",
+                    "Price": 3.45,
+                    "Symbol": "png",
+                    "UpdatedAt": "2021-05-18T04:43:49.658Z",
+                    "UIID": "pangolin"
+                  },
+                  {
+                    "Name": "Groestlcoin",
+                    "Price": 1.15,
+                    "Symbol": "grs",
+                    "UpdatedAt": "2021-05-18T04:43:07.396Z",
+                    "UIID": "groestlcoin"
+                  },
+                  {
+                    "Name": "Request",
+                    "Price": 0.107327,
+                    "Symbol": "req",
+                    "UpdatedAt": "2021-05-18T04:43:23.656Z",
+                    "UIID": "request-network"
+                  },
+                  {
+                    "Name": "MANTRA DAO",
+                    "Price": 0.277453,
+                    "Symbol": "om",
+                    "UpdatedAt": "2021-05-18T04:48:23.146Z",
+                    "UIID": "mantra-dao"
+                  },
+                  {
+                    "Name": "TrueFi",
+                    "Price": 0.333672,
+                    "Symbol": "tru",
+                    "UpdatedAt": "2021-05-18T04:48:17.655Z",
+                    "UIID": "truefi"
+                  },
+                  {
+                    "Name": "Cream ETH 2",
+                    "Price": 3243.4,
+                    "Symbol": "creth2",
+                    "UpdatedAt": "2021-05-18T04:39:24.214Z",
+                    "UIID": "cream-eth2"
+                  },
+                  {
+                    "Name": "Bifrost",
+                    "Price": 0.132911,
+                    "Symbol": "bfc",
+                    "UpdatedAt": "2021-05-18T04:47:42.107Z",
+                    "UIID": "bifrost"
+                  },
+                  {
+                    "Name": "LBRY Credits",
+                    "Price": 0.138387,
+                    "Symbol": "lbc",
+                    "UpdatedAt": "2021-05-18T04:46:19.903Z",
+                    "UIID": "lbry-credits"
+                  },
+                  {
+                    "Name": "BSCPAD",
+                    "Price": 1.74,
+                    "Symbol": "bscpad",
+                    "UpdatedAt": "2021-05-18T04:48:48.252Z",
+                    "UIID": "bscpad"
+                  },
+                  {
+                    "Name": "xDAI Stake",
+                    "Price": 14.38,
+                    "Symbol": "stake",
+                    "UpdatedAt": "2021-05-18T04:47:37.368Z",
+                    "UIID": "xdai-stake"
+                  },
+                  {
+                    "Name": "Gemini Dollar",
+                    "Price": 0.998808,
+                    "Symbol": "gusd",
+                    "UpdatedAt": "2021-05-18T04:46:45.217Z",
+                    "UIID": "gemini-dollar"
+                  },
+                  {
+                    "Name": "GET Protocol",
+                    "Price": 4.88,
+                    "Symbol": "get",
+                    "UpdatedAt": "2021-05-18T04:46:11.188Z",
+                    "UIID": "get-token"
+                  },
+                  {
+                    "Name": "Refereum",
+                    "Price": 0.01605529,
+                    "Symbol": "rfr",
+                    "UpdatedAt": "2021-05-18T04:47:53.33Z",
+                    "UIID": "refereum"
+                  },
+                  {
+                    "Name": "PEAKDEFI",
+                    "Price": 0.453225,
+                    "Symbol": "peak",
+                    "UpdatedAt": "2021-05-18T04:41:54.932Z",
+                    "UIID": "marketpeak"
+                  },
+                  {
+                    "Name": "Vesper Finance",
+                    "Price": 23.62,
+                    "Symbol": "vsp",
+                    "UpdatedAt": "2021-05-18T04:46:53.097Z",
+                    "UIID": "vesper-finance"
+                  },
+                  {
+                    "Name": "BOSAGORA",
+                    "Price": 0.255666,
+                    "Symbol": "boa",
+                    "UpdatedAt": "2021-05-18T04:46:31.584Z",
+                    "UIID": "bosagora"
+                  },
+                  {
+                    "Name": "Paris Saint-Germain Fan Token",
+                    "Price": 36.6,
+                    "Symbol": "psg",
+                    "UpdatedAt": "2021-05-18T04:46:54.269Z",
+                    "UIID": "paris-saint-germain-fan-token"
+                  },
+                  {
+                    "Name": "Terra Virtua Kolect",
+                    "Price": 0.351982,
+                    "Symbol": "tvk",
+                    "UpdatedAt": "2021-05-18T04:47:02.732Z",
+                    "UIID": "terra-virtua-kolect"
+                  },
+                  {
+                    "Name": "Kylin Network",
+                    "Price": 0.770245,
+                    "Symbol": "kyl",
+                    "UpdatedAt": "2021-05-18T04:48:17.101Z",
+                    "UIID": "kylin-network"
+                  },
+                  {
+                    "Name": "SOLVE",
+                    "Price": 0.198861,
+                    "Symbol": "solve",
+                    "UpdatedAt": "2021-05-18T04:46:24.018Z",
+                    "UIID": "solve-care"
+                  },
+                  {
+                    "Name": "dForce Token",
+                    "Price": 0.271273,
+                    "Symbol": "df",
+                    "UpdatedAt": "2021-05-18T04:47:26.327Z",
+                    "UIID": "dforce-token"
+                  },
+                  {
+                    "Name": "pNetwork",
+                    "Price": 1.78,
+                    "Symbol": "pnt",
+                    "UpdatedAt": "2021-05-18T04:45:45.776Z",
+                    "UIID": "pnetwork"
+                  },
+                  {
+                    "Name": "Neutrino System Base Token",
+                    "Price": 41.3,
+                    "Symbol": "nsbt",
+                    "UpdatedAt": "2021-05-18T04:47:34.89Z",
+                    "UIID": "neutrino-system-base-token"
+                  },
+                  {
+                    "Name": "Glitch Protocol",
+                    "Price": 1.07,
+                    "Symbol": "glch",
+                    "UpdatedAt": "2021-05-18T04:40:48.269Z",
+                    "UIID": "glitch-protocol"
+                  },
+                  {
+                    "Name": "HARD Protocol",
+                    "Price": 1.18,
+                    "Symbol": "HARD",
+                    "UpdatedAt": "2021-05-18T04:48:23.186Z",
+                    "UIID": "hard-protocol"
+                  },
+                  {
+                    "Name": "Frontier",
+                    "Price": 1.96,
+                    "Symbol": "front",
+                    "UpdatedAt": "2021-05-18T04:47:36.352Z",
+                    "UIID": "frontier-token"
+                  },
+                  {
+                    "Name": "ARPA Chain",
+                    "Price": 0.076556,
+                    "Symbol": "arpa",
+                    "UpdatedAt": "2021-05-18T04:48:03.449Z",
+                    "UIID": "arpa-chain"
+                  },
+                  {
+                    "Name": "GXChain",
+                    "Price": 1.07,
+                    "Symbol": "gxc",
+                    "UpdatedAt": "2021-05-18T04:48:18.921Z",
+                    "UIID": "gxchain"
+                  },
+                  {
+                    "Name": "Einsteinium",
+                    "Price": 0.335546,
+                    "Symbol": "emc2",
+                    "UpdatedAt": "2021-05-18T04:38:57.547Z",
+                    "UIID": "einsteinium"
+                  },
+                  {
+                    "Name": "Propy",
+                    "Price": 1.28,
+                    "Symbol": "pro",
+                    "UpdatedAt": "2021-05-18T04:38:56.32Z",
+                    "UIID": "propy"
+                  },
+                  {
+                    "Name": "Sentivate",
+                    "Price": 0.02996045,
+                    "Symbol": "sntvt",
+                    "UpdatedAt": "2021-05-18T04:48:19.199Z",
+                    "UIID": "sentivate"
+                  },
+                  {
+                    "Name": "LGO Token",
+                    "Price": 0.463174,
+                    "Symbol": "lgo",
+                    "UpdatedAt": "2021-05-18T04:43:00.033Z",
+                    "UIID": "legolas-exchange"
+                  },
+                  {
+                    "Name": "Sora Validator Token",
+                    "Price": 6.78,
+                    "Symbol": "val",
+                    "UpdatedAt": "2021-05-18T04:45:47.33Z",
+                    "UIID": "sora-validator-token"
+                  },
+                  {
+                    "Name": "Dragonchain",
+                    "Price": 0.200748,
+                    "Symbol": "drgn",
+                    "UpdatedAt": "2021-05-18T04:46:45.981Z",
+                    "UIID": "dragonchain"
+                  },
+                  {
+                    "Name": "Peercoin",
+                    "Price": 2.92,
+                    "Symbol": "ppc",
+                    "UpdatedAt": "2021-05-18T04:48:25.096Z",
+                    "UIID": "peercoin"
+                  },
+                  {
+                    "Name": "Zero Collateral Dai",
+                    "Price": 0.00141013,
+                    "Symbol": "zai",
+                    "UpdatedAt": "2021-05-17T12:47:33.008Z",
+                    "UIID": "zero-collateral-dai"
+                  },
+                  {
+                    "Name": "STP Network",
+                    "Price": 0.064749,
+                    "Symbol": "stpt",
+                    "UpdatedAt": "2021-05-18T04:48:28.39Z",
+                    "UIID": "stp-network"
+                  },
+                  {
+                    "Name": "cVault.finance",
+                    "Price": 7173.21,
+                    "Symbol": "core",
+                    "UpdatedAt": "2021-05-18T04:44:15.411Z",
+                    "UIID": "cvault-finance"
+                  },
+                  {
+                    "Name": "Cobak Token",
+                    "Price": 5.57,
+                    "Symbol": "cbk",
+                    "UpdatedAt": "2021-05-18T04:43:21.013Z",
+                    "UIID": "cobak-token"
+                  },
+                  {
+                    "Name": "HyperCash",
+                    "Price": 1.58,
+                    "Symbol": "hc",
+                    "UpdatedAt": "2021-05-18T04:46:24.665Z",
+                    "UIID": "hshare"
+                  },
+                  {
+                    "Name": "Vertcoin",
+                    "Price": 1.19,
+                    "Symbol": "vtc",
+                    "UpdatedAt": "2021-05-18T04:44:28.528Z",
+                    "UIID": "vertcoin"
+                  },
+                  {
+                    "Name": "saffron.finance",
+                    "Price": 886.03,
+                    "Symbol": "sfi",
+                    "UpdatedAt": "2021-05-18T04:46:14.623Z",
+                    "UIID": "saffron-finance"
+                  },
+                  {
+                    "Name": "Index Cooperative",
+                    "Price": 49.43,
+                    "Symbol": "index",
+                    "UpdatedAt": "2021-05-18T04:45:32.643Z",
+                    "UIID": "index-cooperative"
+                  },
+                  {
+                    "Name": "EcoFi",
+                    "Price": 5.13,
+                    "Symbol": "eco",
+                    "UpdatedAt": "2021-05-18T02:39:44.04Z",
+                    "UIID": "ecofi"
+                  },
+                  {
+                    "Name": "Oxen",
+                    "Price": 1.28,
+                    "Symbol": "oxen",
+                    "UpdatedAt": "2021-05-18T04:47:57.607Z",
+                    "UIID": "loki-network"
+                  },
+                  {
+                    "Name": "Dego Finance",
+                    "Price": 12.82,
+                    "Symbol": "dego",
+                    "UpdatedAt": "2021-05-18T04:48:21.541Z",
+                    "UIID": "dego-finance"
+                  },
+                  {
+                    "Name": "Contentos",
+                    "Price": 0.0232005,
+                    "Symbol": "cos",
+                    "UpdatedAt": "2021-05-18T04:48:17.221Z",
+                    "UIID": "contentos"
+                  },
+                  {
+                    "Name": "ARMOR",
+                    "Price": 0.777892,
+                    "Symbol": "armor",
+                    "UpdatedAt": "2021-05-18T04:48:13.726Z",
+                    "UIID": "armor"
+                  },
+                  {
+                    "Name": "Bridge Mutual",
+                    "Price": 1.35,
+                    "Symbol": "bmi",
+                    "UpdatedAt": "2021-05-18T04:48:48.218Z",
+                    "UIID": "bridge-mutual"
+                  },
+                  {
+                    "Name": "Smartlands Network",
+                    "Price": 13.5,
+                    "Symbol": "slt",
+                    "UpdatedAt": "2021-05-18T04:42:44.555Z",
+                    "UIID": "smartlands"
+                  },
+                  {
+                    "Name": "Dero",
+                    "Price": 6.48,
+                    "Symbol": "dero",
+                    "UpdatedAt": "2021-05-18T04:47:37.894Z",
+                    "UIID": "dero"
+                  },
+                  {
+                    "Name": "Rarible",
+                    "Price": 18.51,
+                    "Symbol": "rari",
+                    "UpdatedAt": "2021-05-18T04:48:10.647Z",
+                    "UIID": "rarible"
+                  },
+                  {
+                    "Name": "sLINK",
+                    "Price": 40.3,
+                    "Symbol": "slink",
+                    "UpdatedAt": "2021-05-18T04:43:11.314Z",
+                    "UIID": "slink"
+                  },
+                  {
+                    "Name": "Harvest Finance",
+                    "Price": 125.67,
+                    "Symbol": "farm",
+                    "UpdatedAt": "2021-05-18T04:47:27.531Z",
+                    "UIID": "harvest-finance"
+                  },
+                  {
+                    "Name": "DUSK Network",
+                    "Price": 0.191351,
+                    "Symbol": "dusk",
+                    "UpdatedAt": "2021-05-18T04:47:50.546Z",
+                    "UIID": "dusk-network"
+                  },
+                  {
+                    "Name": "NXT",
+                    "Price": 0.067957,
+                    "Symbol": "nxt",
+                    "UpdatedAt": "2021-05-18T04:48:04.123Z",
+                    "UIID": "nxt"
+                  },
+                  {
+                    "Name": "DeepBrain Chain",
+                    "Price": 0.02095766,
+                    "Symbol": "dbc",
+                    "UpdatedAt": "2021-05-18T04:47:46.328Z",
+                    "UIID": "deepbrain-chain"
+                  },
+                  {
+                    "Name": "V.SYSTEMS",
+                    "Price": 0.02911618,
+                    "Symbol": "vsys",
+                    "UpdatedAt": "2021-05-18T04:47:28.312Z",
+                    "UIID": "v-systems"
+                  },
+                  {
+                    "Name": "YIELD App",
+                    "Price": 0.625061,
+                    "Symbol": "yld",
+                    "UpdatedAt": "2021-05-18T04:43:43.153Z",
+                    "UIID": "yield-app"
+                  },
+                  {
+                    "Name": "DSLA Protocol",
+                    "Price": 0.01019848,
+                    "Symbol": "dsla",
+                    "UpdatedAt": "2021-05-18T04:46:52.811Z",
+                    "UIID": "stacktical"
+                  },
+                  {
+                    "Name": "FIO Protocol",
+                    "Price": 0.275392,
+                    "Symbol": "fio",
+                    "UpdatedAt": "2021-05-18T04:47:28.527Z",
+                    "UIID": "fio-protocol"
+                  },
+                  {
+                    "Name": "Rai Reflex Index",
+                    "Price": 3.02,
+                    "Symbol": "rai",
+                    "UpdatedAt": "2021-05-18T04:46:08.663Z",
+                    "UIID": "rai"
+                  },
+                  {
+                    "Name": "Chain Games",
+                    "Price": 0.218694,
+                    "Symbol": "chain",
+                    "UpdatedAt": "2021-05-18T04:48:30.288Z",
+                    "UIID": "chain-games"
+                  },
+                  {
+                    "Name": "Sai",
+                    "Price": 17.77,
+                    "Symbol": "sai",
+                    "UpdatedAt": "2021-05-18T03:48:52.064Z",
+                    "UIID": "sai"
+                  },
+                  {
+                    "Name": "Switcheo",
+                    "Price": 0.04474609,
+                    "Symbol": "swth",
+                    "UpdatedAt": "2021-05-18T04:46:51.586Z",
+                    "UIID": "switcheo"
+                  },
+                  {
+                    "Name": "Keep3rV1",
+                    "Price": 271.9,
+                    "Symbol": "kp3r",
+                    "UpdatedAt": "2021-05-18T04:47:59.565Z",
+                    "UIID": "keep3rv1"
+                  },
+                  {
+                    "Name": "#MetaHash",
+                    "Price": 0.02353737,
+                    "Symbol": "mhc",
+                    "UpdatedAt": "2021-05-18T04:46:22.563Z",
+                    "UIID": "metahash"
+                  },
+                  {
+                    "Name": "SmartKey",
+                    "Price": 0.326968,
+                    "Symbol": "skey",
+                    "UpdatedAt": "2021-05-18T04:48:30.191Z",
+                    "UIID": "smartkey"
+                  },
+                  {
+                    "Name": "Auto",
+                    "Price": 2450.63,
+                    "Symbol": "auto",
+                    "UpdatedAt": "2021-05-18T04:47:01.78Z",
+                    "UIID": "auto"
+                  },
+                  {
+                    "Name": "DigixDAO",
+                    "Price": 668.48,
+                    "Symbol": "dgd",
+                    "UpdatedAt": "2021-05-18T04:47:44.854Z",
+                    "UIID": "digixdao"
+                  },
+                  {
+                    "Name": "Nimiq",
+                    "Price": 0.00814545,
+                    "Symbol": "nim",
+                    "UpdatedAt": "2021-05-18T04:47:50.674Z",
+                    "UIID": "nimiq-2"
+                  },
+                  {
+                    "Name": "Everest",
+                    "Price": 0.532125,
+                    "Symbol": "id",
+                    "UpdatedAt": "2021-05-18T04:44:57.968Z",
+                    "UIID": "everid"
+                  },
+                  {
+                    "Name": "Decentral Games",
+                    "Price": 266.2,
+                    "Symbol": "dg",
+                    "UpdatedAt": "2021-05-18T04:40:05.503Z",
+                    "UIID": "decentral-games"
+                  },
+                  {
+                    "Name": "Hermez Network",
+                    "Price": 5.83,
+                    "Symbol": "hez",
+                    "UpdatedAt": "2021-05-18T04:46:58.989Z",
+                    "UIID": "hermez-network-token"
+                  },
+                  {
+                    "Name": "Nest Protocol",
+                    "Price": 0.02969826,
+                    "Symbol": "nest",
+                    "UpdatedAt": "2021-05-18T04:47:42.759Z",
+                    "UIID": "nest"
+                  },
+                  {
+                    "Name": "Liquity",
+                    "Price": 16.37,
+                    "Symbol": "lqty",
+                    "UpdatedAt": "2021-05-18T04:48:06.737Z",
+                    "UIID": "liquity"
+                  },
+                  {
+                    "Name": "Banano",
+                    "Price": 0.04953761,
+                    "Symbol": "ban",
+                    "UpdatedAt": "2021-05-18T04:47:46.618Z",
+                    "UIID": "banano"
+                  },
+                  {
+                    "Name": "Apollo",
+                    "Price": 0.00413002,
+                    "Symbol": "apl",
+                    "UpdatedAt": "2021-05-18T04:48:29.325Z",
+                    "UIID": "apollo"
+                  },
+                  {
+                    "Name": "Wing Finance",
+                    "Price": 37.79,
+                    "Symbol": "wing",
+                    "UpdatedAt": "2021-05-18T04:48:18.22Z",
+                    "UIID": "wing-finance"
+                  },
+                  {
+                    "Name": "Stafi",
+                    "Price": 2.22,
+                    "Symbol": "fis",
+                    "UpdatedAt": "2021-05-18T04:47:59.822Z",
+                    "UIID": "stafi"
+                  },
+                  {
+                    "Name": "Aavegotchi",
+                    "Price": 1.36,
+                    "Symbol": "ghst",
+                    "UpdatedAt": "2021-05-18T04:48:23.322Z",
+                    "UIID": "aavegotchi"
+                  },
+                  {
+                    "Name": "Visor",
+                    "Price": 2.4,
+                    "Symbol": "visr",
+                    "UpdatedAt": "2021-05-18T04:41:38.285Z",
+                    "UIID": "visor"
+                  },
+                  {
+                    "Name": "Ripio Credit Network",
+                    "Price": 0.115162,
+                    "Symbol": "rcn",
+                    "UpdatedAt": "2021-05-18T04:46:43.138Z",
+                    "UIID": "ripio-credit-network"
+                  },
+                  {
+                    "Name": "UniLend Finance",
+                    "Price": 1.35,
+                    "Symbol": "uft",
+                    "UpdatedAt": "2021-05-18T04:47:36.329Z",
+                    "UIID": "unlend-finance"
+                  },
+                  {
+                    "Name": "Telos",
+                    "Price": 0.264753,
+                    "Symbol": "tlos",
+                    "UpdatedAt": "2021-05-18T04:47:34.236Z",
+                    "UIID": "telos"
+                  },
+                  {
+                    "Name": "Aergo",
+                    "Price": 0.222283,
+                    "Symbol": "aergo",
+                    "UpdatedAt": "2021-05-18T04:46:28.737Z",
+                    "UIID": "aergo"
+                  },
+                  {
+                    "Name": "sBTC",
+                    "Price": 46310,
+                    "Symbol": "sbtc",
+                    "UpdatedAt": "2021-05-18T04:43:16.491Z",
+                    "UIID": "sbtc"
+                  },
+                  {
+                    "Name": "DigitalBits",
+                    "Price": 0.076308,
+                    "Symbol": "xdb",
+                    "UpdatedAt": "2021-05-18T04:46:18.767Z",
+                    "UIID": "digitalbits"
+                  },
+                  {
+                    "Name": "Rootkit",
+                    "Price": 6019.71,
+                    "Symbol": "root",
+                    "UpdatedAt": "2021-05-18T04:43:44.793Z",
+                    "UIID": "rootkit"
+                  },
+                  {
+                    "Name": "ZB Token",
+                    "Price": 0.519214,
+                    "Symbol": "zb",
+                    "UpdatedAt": "2021-05-18T04:48:23.08Z",
+                    "UIID": "zb-token"
+                  },
+                  {
+                    "Name": "Metronome",
+                    "Price": 4.87,
+                    "Symbol": "met",
+                    "UpdatedAt": "2021-05-18T04:48:25.493Z",
+                    "UIID": "metronome"
+                  },
+                  {
+                    "Name": "BTU Protocol",
+                    "Price": 0.707346,
+                    "Symbol": "btu",
+                    "UpdatedAt": "2021-05-18T04:39:54.044Z",
+                    "UIID": "btu-protocol"
+                  },
+                  {
+                    "Name": "Tornado Cash",
+                    "Price": 86.37,
+                    "Symbol": "torn",
+                    "UpdatedAt": "2021-05-18T04:48:08.227Z",
+                    "UIID": "tornado-cash"
+                  },
+                  {
+                    "Name": "BoringDAO",
+                    "Price": 618.14,
+                    "Symbol": "bor",
+                    "UpdatedAt": "2021-05-18T04:47:45.334Z",
+                    "UIID": "boringdao"
+                  },
+                  {
+                    "Name": "Empty Set Dollar",
+                    "Price": 0.109486,
+                    "Symbol": "esd",
+                    "UpdatedAt": "2021-05-18T04:47:34.765Z",
+                    "UIID": "empty-set-dollar"
+                  },
+                  {
+                    "Name": "Radicle",
+                    "Price": 11.89,
+                    "Symbol": "rad",
+                    "UpdatedAt": "2021-05-18T04:47:31.808Z",
+                    "UIID": "radicle"
+                  },
+                  {
+                    "Name": "AIOZ Network",
+                    "Price": 0.899283,
+                    "Symbol": "aioz",
+                    "UpdatedAt": "2021-05-18T04:46:33.257Z",
+                    "UIID": "aioz-network"
+                  },
+                  {
+                    "Name": "FREE coin",
+                    "Price": 6.21E-06,
+                    "Symbol": "free",
+                    "UpdatedAt": "2021-05-18T04:48:18.445Z",
+                    "UIID": "free-coin"
+                  },
+                  {
+                    "Name": "SportX",
+                    "Price": 0.692883,
+                    "Symbol": "sx",
+                    "UpdatedAt": "2021-05-18T04:23:04.096Z",
+                    "UIID": "sportx"
+                  },
+                  {
+                    "Name": "Bao Finance",
+                    "Price": 0.00074788,
+                    "Symbol": "bao",
+                    "UpdatedAt": "2021-05-18T04:48:15.647Z",
+                    "UIID": "bao-finance"
+                  }
+                ],
+                "errors": []
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "27746"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"6c62-X6igEUWfLGQEhNqxT0QhbNJcHYk\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 May 2021 04:48:49 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add Coin",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "AddCoin",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddCoinRequest"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/AddCoinError1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": "000",
+                "data": null,
+                "message": "Coin doesn't exist coinID: dogecoinasdfasdfasdfas"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "88"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"58-Se/GXgDEQ2VRc+4A8OzL/fC7UU4\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 May 2021 04:50:24 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddCoinSuccess"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": null,
+                "message": "Success",
+                "data": {
+                  "Image": "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579",
+                  "Name": "Bitcoin",
+                  "Price": 43520,
+                  "Symbol": "btc",
+                  "UpdatedAt": "2021-05-17T04:44:15.749Z",
+                  "UIID": "bitcoin"
+                },
+                "errors": []
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "239"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"ef-B6K89gQWeFnNucu3tAqHIEotdPc\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Mon, 17 May 2021 04:46:32 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/coins/top": {
+      "get": {
+        "summary": "Get Top Coins",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "GetTopCoins",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "desc",
+            "description": "desc/asc"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetTopCoinsSuccess"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": null,
+                "message": "Success",
+                "data": [
+                  {
+                    "Symbol": "bz",
+                    "Name": "BitZ Token",
+                    "Image": "https://assets.coingecko.com/coins/images/4774/large/BitZ.?1613974566",
+                    "UpdatedAt": "2021-05-18T04:41:28.85Z",
+                    "usd": 0.41306,
+                    "eur": 0.339554,
+                    "ars": 38.85
+                  },
+                  {
+                    "Symbol": "doge",
+                    "Name": "Dogecoin",
+                    "Image": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
+                    "UpdatedAt": "2021-05-18T04:51:03.606Z",
+                    "usd": 0.502533,
+                    "eur": 0.413105,
+                    "ars": 47.27
+                  },
+                  {
+                    "Symbol": "mcb",
+                    "Name": "MCDEX",
+                    "Image": "https://assets.coingecko.com/coins/images/11796/large/mcb.png?1594355515",
+                    "UpdatedAt": "2021-05-18T04:50:47.252Z",
+                    "usd": 23.06,
+                    "eur": 18.96,
+                    "ars": 2169.44
+                  },
+                  {
+                    "Symbol": "btc",
+                    "Name": "Bitcoin",
+                    "Image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+                    "UpdatedAt": "2021-05-18T04:50:23.822Z",
+                    "usd": 45578,
+                    "eur": 37467,
+                    "ars": 4287219
+                  }
+                ],
+                "errors": []
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "837"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"345-IC4O8zkFEwHRwVRCRf0LC4NadnI\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 May 2021 04:51:22 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/GetTopCoinsUnauthorized1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "code": "001",
+                "data": null,
+                "message": "Unauthorized, session ended",
+                "errors": [
+                  "Unauthorized, session ended"
+                ]
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "107"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"6b-/siiDTIU7xssDJJX7rdfaK4bjro\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 May 2021 04:51:04 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateUserRequest": {
+      "title": "CreateUserRequest",
+      "example": {
+        "name": "Anderson",
+        "surname": "Rodriguez",
+        "username": "Andy",
+        "password": "123456789",
+        "currency": "usd"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "surname",
+        "username",
+        "password",
+        "currency"
+      ]
+    },
+    "CreateUserSuccess": {
+      "title": "CreateUserSuccess",
+      "example": {
+        "code": null,
+        "message": null,
+        "data": {
+          "Name": "Anderson",
+          "Surname": "Rodriguez",
+          "Username": "Andy",
+          "Password": "$2b$10$AySG5nRyqjc2Jx3MGKSLGO6XeShYBCjDGtdqVL0LyhbeqlLDQvP4y",
+          "Currency": "usd",
+          "Id": 2
+        },
+        "errors": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/Data"
+        },
+        "errors": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "data",
+        "errors"
+      ]
+    },
+    "Data": {
+      "title": "Data",
+      "example": {
+        "Name": "Anderson",
+        "Surname": "Rodriguez",
+        "Username": "Andy",
+        "Password": "$2b$10$AySG5nRyqjc2Jx3MGKSLGO6XeShYBCjDGtdqVL0LyhbeqlLDQvP4y",
+        "Currency": "usd",
+        "Id": 2
+      },
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Surname": {
+          "type": "string"
+        },
+        "Username": {
+          "type": "string"
+        },
+        "Password": {
+          "type": "string"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "Name",
+        "Surname",
+        "Username",
+        "Password",
+        "Currency",
+        "Id"
+      ]
+    },
+    "CreateUserError1": {
+      "title": "CreateUserError1",
+      "example": {
+        "code": "002",
+        "message": "Bad Request",
+        "data": null,
+        "errors": [
+          "Name must be a string "
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "data",
+        "errors"
+      ]
+    },
+    "LoginSuccess": {
+      "title": "LoginSuccess",
+      "example": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJBbmRlcnNvbiBSb2RyaWd1ZXoiLCJpYXQiOjE2MjExNDQ5Mzd9.5RfC6l0UScOyoLQqCYMG8ymcTi8e-k31ebgJ05Ck7io"
+      },
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "token"
+      ]
+    },
+    "ErrorLogin1": {
+      "title": "ErrorLogin1",
+      "example": {
+        "code": "000",
+        "data": null,
+        "message": "Error: invalid username or password"
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "data",
+        "message"
+      ]
+    },
+    "GetCoinsUnauthorized1": {
+      "title": "GetCoinsUnauthorized1",
+      "example": {
+        "code": "001",
+        "data": null,
+        "message": "Unauthorized, session ended",
+        "errors": [
+          "Unauthorized, session ended"
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "data",
+        "message",
+        "errors"
+      ]
+    },
+    "GetCoinsSuccess": {
+      "title": "GetCoinsSuccess",
+      "example": {
+        "code": null,
+        "message": "Success",
+        "data": [
+          {
+            "Name": "Metadium",
+            "Price": 0.127743,
+            "Symbol": "meta",
+            "UpdatedAt": "2021-05-18T04:43:28.934Z",
+            "UIID": "metadium"
+          },
+          {
+            "Name": "Kin",
+            "Price": 0.00013423,
+            "Symbol": "kin",
+            "UpdatedAt": "2021-05-18T04:48:05.774Z",
+            "UIID": "kin"
+          },
+          {
+            "Name": "Wrapped NXM",
+            "Price": 98.17,
+            "Symbol": "wnxm",
+            "UpdatedAt": "2021-05-18T04:47:34.383Z",
+            "UIID": "wrapped-nxm"
+          },
+          {
+            "Name": "Atari",
+            "Price": 0.240748,
+            "Symbol": "atri",
+            "UpdatedAt": "2021-05-18T04:45:44.876Z",
+            "UIID": "atari"
+          },
+          {
+            "Name": "Everipedia",
+            "Price": 0.01833911,
+            "Symbol": "iq",
+            "UpdatedAt": "2021-05-18T04:47:35.047Z",
+            "UIID": "everipedia"
+          },
+          {
+            "Name": "Reddcoin",
+            "Price": 0.00667197,
+            "Symbol": "rdd",
+            "UpdatedAt": "2021-05-18T04:43:06.058Z",
+            "UIID": "reddcoin"
+          },
+          {
+            "Name": "DeFiPulse Index",
+            "Price": 589.58,
+            "Symbol": "dpi",
+            "UpdatedAt": "2021-05-18T04:48:04.246Z",
+            "UIID": "defipulse-index"
+          },
+          {
+            "Name": "Secret",
+            "Price": 2.85,
+            "Symbol": "scrt",
+            "UpdatedAt": "2021-05-18T04:46:22.912Z",
+            "UIID": "secret"
+          },
+          {
+            "Name": "Metal",
+            "Price": 3.1,
+            "Symbol": "mtl",
+            "UpdatedAt": "2021-05-18T04:48:00.282Z",
+            "UIID": "metal"
+          },
+          {
+            "Name": "Syscoin",
+            "Price": 0.323196,
+            "Symbol": "sys",
+            "UpdatedAt": "2021-05-18T04:46:24.699Z",
+            "UIID": "syscoin"
+          },
+          {
+            "Name": "KardiaChain",
+            "Price": 0.083059,
+            "Symbol": "kai",
+            "UpdatedAt": "2021-05-18T04:47:27.005Z",
+            "UIID": "kardiachain"
+          },
+          {
+            "Name": "Constellation",
+            "Price": 0.08109,
+            "Symbol": "dag",
+            "UpdatedAt": "2021-05-18T04:46:31.705Z",
+            "UIID": "constellation-labs"
+          },
+          {
+            "Name": "Render Token",
+            "Price": 1.25,
+            "Symbol": "rndr",
+            "UpdatedAt": "2021-05-18T04:48:44.905Z",
+            "UIID": "render-token"
+          },
+          {
+            "Name": "SONM",
+            "Price": 0.441992,
+            "Symbol": "snm",
+            "UpdatedAt": "2021-05-18T04:38:19.752Z",
+            "UIID": "sonm"
+          },
+          {
+            "Name": "district0x",
+            "Price": 0.25856,
+            "Symbol": "dnt",
+            "UpdatedAt": "2021-05-18T04:47:38.905Z",
+            "UIID": "district0x"
+          },
+          {
+            "Name": "c0x",
+            "Price": 0.03150022,
+            "Symbol": "czrx",
+            "UpdatedAt": "2021-05-18T04:11:29.91Z",
+            "UIID": "compound-0x"
+          },
+          {
+            "Name": "Bounce",
+            "Price": 43.19,
+            "Symbol": "auction",
+            "UpdatedAt": "2021-05-18T04:47:49.536Z",
+            "UIID": "auction"
+          },
+          {
+            "Name": "Safemars",
+            "Price": 4.8E-07,
+            "Symbol": "safemars",
+            "UpdatedAt": "2021-05-18T04:48:20.444Z",
+            "UIID": "safemars"
+          },
+          {
+            "Name": "OriginTrail",
+            "Price": 0.52303,
+            "Symbol": "trac",
+            "UpdatedAt": "2021-05-18T04:46:29.538Z",
+            "UIID": "origintrail"
+          },
+          {
+            "Name": "Divi",
+            "Price": 0.080052,
+            "Symbol": "divi",
+            "UpdatedAt": "2021-05-18T04:45:06.463Z",
+            "UIID": "divi"
+          },
+          {
+            "Name": "Handshake",
+            "Price": 0.472863,
+            "Symbol": "hns",
+            "UpdatedAt": "2021-05-18T04:47:33.011Z",
+            "UIID": "handshake"
+          },
+          {
+            "Name": "Verasity",
+            "Price": 0.02790945,
+            "Symbol": "vra",
+            "UpdatedAt": "2021-05-18T04:45:04.097Z",
+            "UIID": "verasity"
+          },
+          {
+            "Name": "MX Token",
+            "Price": 1.7,
+            "Symbol": "mx",
+            "UpdatedAt": "2021-05-18T04:46:34.483Z",
+            "UIID": "mx-token"
+          },
+          {
+            "Name": "Aion",
+            "Price": 0.364635,
+            "Symbol": "aion",
+            "UpdatedAt": "2021-05-18T04:46:17.739Z",
+            "UIID": "aion"
+          },
+          {
+            "Name": "Hive",
+            "Price": 0.480708,
+            "Symbol": "hive",
+            "UpdatedAt": "2021-05-18T04:48:28.302Z",
+            "UIID": "hive"
+          },
+          {
+            "Name": "Hathor",
+            "Price": 0.940413,
+            "Symbol": "htr",
+            "UpdatedAt": "2021-05-18T04:46:26.13Z",
+            "UIID": "hathor"
+          },
+          {
+            "Name": "DAO Maker",
+            "Price": 4.97,
+            "Symbol": "dao",
+            "UpdatedAt": "2021-05-18T04:48:10.599Z",
+            "UIID": "dao-maker"
+          },
+          {
+            "Name": "RSK Infrastructure Framework",
+            "Price": 0.240961,
+            "Symbol": "rif",
+            "UpdatedAt": "2021-05-18T04:47:22.177Z",
+            "UIID": "rif-token"
+          },
+          {
+            "Name": "Linear",
+            "Price": 0.070565,
+            "Symbol": "lina",
+            "UpdatedAt": "2021-05-18T04:48:13.484Z",
+            "UIID": "linear"
+          },
+          {
+            "Name": "aelf",
+            "Price": 0.366741,
+            "Symbol": "elf",
+            "UpdatedAt": "2021-05-18T04:47:50.148Z",
+            "UIID": "aelf"
+          },
+          {
+            "Name": "Oasis Network",
+            "Price": 0.115026,
+            "Symbol": "rose",
+            "UpdatedAt": "2021-05-18T04:48:19.407Z",
+            "UIID": "oasis-network"
+          },
+          {
+            "Name": "CRYPTO20",
+            "Price": 5.11,
+            "Symbol": "c20",
+            "UpdatedAt": "2021-05-18T04:46:45.963Z",
+            "UIID": "crypto20"
+          },
+          {
+            "Name": "inSure DeFi",
+            "Price": 0.00625865,
+            "Symbol": "sure",
+            "UpdatedAt": "2021-05-18T04:34:30.249Z",
+            "UIID": "insure"
+          },
+          {
+            "Name": "Function X",
+            "Price": 0.615574,
+            "Symbol": "fx",
+            "UpdatedAt": "2021-05-18T04:48:25.608Z",
+            "UIID": "fx-coin"
+          },
+          {
+            "Name": "SuperFarm",
+            "Price": 1.59,
+            "Symbol": "super",
+            "UpdatedAt": "2021-05-18T04:47:47.712Z",
+            "UIID": "superfarm"
+          },
+          {
+            "Name": "PAID Network",
+            "Price": 1.8,
+            "Symbol": "paid",
+            "UpdatedAt": "2021-05-18T04:48:24.615Z",
+            "UIID": "paid-network"
+          },
+          {
+            "Name": "GivingToServices",
+            "Price": 0.03149372,
+            "Symbol": "svcs",
+            "UpdatedAt": "2021-05-18T04:43:49.39Z",
+            "UIID": "givingtoservices"
+          },
+          {
+            "Name": "LockTrip",
+            "Price": 9.76,
+            "Symbol": "loc",
+            "UpdatedAt": "2021-05-18T04:33:46.242Z",
+            "UIID": "lockchain"
+          },
+          {
+            "Name": "Gas",
+            "Price": 11.59,
+            "Symbol": "gas",
+            "UpdatedAt": "2021-05-18T04:48:31.175Z",
+            "UIID": "gas"
+          },
+          {
+            "Name": "Tether Gold",
+            "Price": 1888.86,
+            "Symbol": "xaut",
+            "UpdatedAt": "2021-05-18T04:48:10.702Z",
+            "UIID": "tether-gold"
+          },
+          {
+            "Name": "Hydra",
+            "Price": 46.2,
+            "Symbol": "hydra",
+            "UpdatedAt": "2021-05-18T04:45:33.958Z",
+            "UIID": "hydra"
+          },
+          {
+            "Name": "Mask Network",
+            "Price": 12.25,
+            "Symbol": "mask",
+            "UpdatedAt": "2021-05-18T04:48:09.542Z",
+            "UIID": "mask-network"
+          },
+          {
+            "Name": "TomoChain",
+            "Price": 1.93,
+            "Symbol": "tomo",
+            "UpdatedAt": "2021-05-18T04:47:41.031Z",
+            "UIID": "tomochain"
+          },
+          {
+            "Name": "Trustswap",
+            "Price": 2.4,
+            "Symbol": "swap",
+            "UpdatedAt": "2021-05-18T04:47:22.461Z",
+            "UIID": "trustswap"
+          },
+          {
+            "Name": "QuarkChain",
+            "Price": 0.0236074,
+            "Symbol": "qkc",
+            "UpdatedAt": "2021-05-18T04:48:40.001Z",
+            "UIID": "quark-chain"
+          },
+          {
+            "Name": "Hxro",
+            "Price": 0.611833,
+            "Symbol": "hxro",
+            "UpdatedAt": "2021-05-18T04:48:09.786Z",
+            "UIID": "hxro"
+          },
+          {
+            "Name": "Tellor",
+            "Price": 90.88,
+            "Symbol": "trb",
+            "UpdatedAt": "2021-05-18T04:47:21.227Z",
+            "UIID": "tellor"
+          },
+          {
+            "Name": "DIA",
+            "Price": 3.68,
+            "Symbol": "DIA",
+            "UpdatedAt": "2021-05-18T04:47:35.489Z",
+            "UIID": "dia-data"
+          },
+          {
+            "Name": "PAC Protocol",
+            "Price": 0.01110721,
+            "Symbol": "pac",
+            "UpdatedAt": "2021-05-18T04:44:26.234Z",
+            "UIID": "paccoin"
+          },
+          {
+            "Name": "Power Ledger",
+            "Price": 0.348148,
+            "Symbol": "powr",
+            "UpdatedAt": "2021-05-18T04:47:26.64Z",
+            "UIID": "power-ledger"
+          },
+          {
+            "Name": "NuCypher",
+            "Price": 0.429771,
+            "Symbol": "nu",
+            "UpdatedAt": "2021-05-18T04:48:42.908Z",
+            "UIID": "nucypher"
+          },
+          {
+            "Name": "JUST",
+            "Price": 0.103021,
+            "Symbol": "jst",
+            "UpdatedAt": "2021-05-18T04:48:30.09Z",
+            "UIID": "just"
+          },
+          {
+            "Name": "Firo",
+            "Price": 12.26,
+            "Symbol": "firo",
+            "UpdatedAt": "2021-05-18T04:47:34.561Z",
+            "UIID": "zcoin"
+          },
+          {
+            "Name": "ankrETH",
+            "Price": 3197.34,
+            "Symbol": "aeth",
+            "UpdatedAt": "2021-05-18T04:44:15.675Z",
+            "UIID": "ankreth"
+          },
+          {
+            "Name": "cBAT",
+            "Price": 0.02232585,
+            "Symbol": "cbat",
+            "UpdatedAt": "2021-05-18T04:03:35.483Z",
+            "UIID": "compound-basic-attention-token"
+          },
+          {
+            "Name": "e-Radix",
+            "Price": 0.126668,
+            "Symbol": "exrd",
+            "UpdatedAt": "2021-05-18T04:47:22.209Z",
+            "UIID": "e-radix"
+          },
+          {
+            "Name": "Edgeware",
+            "Price": 0.02287236,
+            "Symbol": "edg",
+            "UpdatedAt": "2021-05-18T04:47:36.167Z",
+            "UIID": "edgeware"
+          },
+          {
+            "Name": "Chromia",
+            "Price": 0.312514,
+            "Symbol": "chr",
+            "UpdatedAt": "2021-05-18T04:48:34.033Z",
+            "UIID": "chromaway"
+          },
+          {
+            "Name": "Ethernity Chain",
+            "Price": 12.41,
+            "Symbol": "ern",
+            "UpdatedAt": "2021-05-18T04:46:13.101Z",
+            "UIID": "ethernity-chain"
+          },
+          {
+            "Name": "PARSIQ",
+            "Price": 1.3,
+            "Symbol": "prq",
+            "UpdatedAt": "2021-05-18T04:48:43.304Z",
+            "UIID": "parsiq"
+          },
+          {
+            "Name": "USDP Stablecoin",
+            "Price": 1.01,
+            "Symbol": "usdp",
+            "UpdatedAt": "2021-05-18T04:16:50.767Z",
+            "UIID": "usdp"
+          },
+          {
+            "Name": "CumRocket",
+            "Price": 0.096937,
+            "Symbol": "cummies",
+            "UpdatedAt": "2021-05-18T04:45:26.859Z",
+            "UIID": "cumrocket"
+          },
+          {
+            "Name": "Quickswap",
+            "Price": 851.98,
+            "Symbol": "quick",
+            "UpdatedAt": "2021-05-18T04:48:00.254Z",
+            "UIID": "quick"
+          },
+          {
+            "Name": "LUKSO Token",
+            "Price": 8.96,
+            "Symbol": "lyxe",
+            "UpdatedAt": "2021-05-18T04:45:34.782Z",
+            "UIID": "lukso-token"
+          },
+          {
+            "Name": "Bytecoin",
+            "Price": 0.00072384,
+            "Symbol": "bcn",
+            "UpdatedAt": "2021-05-18T04:46:24.51Z",
+            "UIID": "bytecoin"
+          },
+          {
+            "Name": "Crust Network",
+            "Price": 75.4,
+            "Symbol": "cru",
+            "UpdatedAt": "2021-05-18T04:47:50.84Z",
+            "UIID": "crust-network"
+          },
+          {
+            "Name": "IRISnet",
+            "Price": 0.13178,
+            "Symbol": "iris",
+            "UpdatedAt": "2021-05-18T04:47:26.872Z",
+            "UIID": "iris-network"
+          },
+          {
+            "Name": "Kleros",
+            "Price": 0.249308,
+            "Symbol": "pnk",
+            "UpdatedAt": "2021-05-18T04:46:58.038Z",
+            "UIID": "kleros"
+          },
+          {
+            "Name": "UnFederalReserve",
+            "Price": 0.404603,
+            "Symbol": "ersdl",
+            "UpdatedAt": "2021-05-18T04:46:12.342Z",
+            "UIID": "unfederalreserve"
+          },
+          {
+            "Name": "Cope",
+            "Price": 8.05,
+            "Symbol": "cope",
+            "UpdatedAt": "2021-05-18T04:48:15.819Z",
+            "UIID": "cope"
+          },
+          {
+            "Name": "Tokenlon",
+            "Price": 5.16,
+            "Symbol": "lon",
+            "UpdatedAt": "2021-05-18T04:48:10.923Z",
+            "UIID": "tokenlon"
+          },
+          {
+            "Name": "Rally",
+            "Price": 0.865463,
+            "Symbol": "rly",
+            "UpdatedAt": "2021-05-18T04:48:08.947Z",
+            "UIID": "rally-2"
+          },
+          {
+            "Name": "Frax",
+            "Price": 1.01,
+            "Symbol": "frax",
+            "UpdatedAt": "2021-05-18T04:48:26.088Z",
+            "UIID": "frax"
+          },
+          {
+            "Name": "Elastos",
+            "Price": 6.52,
+            "Symbol": "ela",
+            "UpdatedAt": "2021-05-18T04:48:07.061Z",
+            "UIID": "elastos"
+          },
+          {
+            "Name": "Litentry",
+            "Price": 6.89,
+            "Symbol": "lit",
+            "UpdatedAt": "2021-05-18T04:48:27.152Z",
+            "UIID": "litentry"
+          },
+          {
+            "Name": "BEAM",
+            "Price": 1.38,
+            "Symbol": "beam",
+            "UpdatedAt": "2021-05-18T04:47:25.793Z",
+            "UIID": "beam"
+          },
+          {
+            "Name": "GNY",
+            "Price": 0.705429,
+            "Symbol": "gny",
+            "UpdatedAt": "2021-05-18T04:35:12.2Z",
+            "UIID": "gny"
+          },
+          {
+            "Name": "CoinMetro",
+            "Price": 0.40211,
+            "Symbol": "xcm",
+            "UpdatedAt": "2021-05-18T04:42:11.73Z",
+            "UIID": "coinmetro"
+          },
+          {
+            "Name": "Hifi Finance",
+            "Price": 0.01299676,
+            "Symbol": "mft",
+            "UpdatedAt": "2021-05-18T04:46:45.886Z",
+            "UIID": "mainframe"
+          },
+          {
+            "Name": "Enzyme",
+            "Price": 90.71,
+            "Symbol": "mln",
+            "UpdatedAt": "2021-05-18T04:46:24.543Z",
+            "UIID": "melon"
+          },
+          {
+            "Name": "Pancake Bunny",
+            "Price": 234.97,
+            "Symbol": "bunny",
+            "UpdatedAt": "2021-05-18T04:48:27.77Z",
+            "UIID": "pancake-bunny"
+          },
+          {
+            "Name": "Cardstarter",
+            "Price": 62.18,
+            "Symbol": "cards",
+            "UpdatedAt": "2021-05-18T04:45:08.872Z",
+            "UIID": "cardstarter"
+          },
+          {
+            "Name": "Nominex",
+            "Price": 4.19,
+            "Symbol": "nmx",
+            "UpdatedAt": "2021-05-18T04:42:06.219Z",
+            "UIID": "nominex"
+          },
+          {
+            "Name": "ChainX",
+            "Price": 11.56,
+            "Symbol": "pcx",
+            "UpdatedAt": "2021-05-18T04:47:31.346Z",
+            "UIID": "chainx"
+          },
+          {
+            "Name": "Smooth Love Potion",
+            "Price": 0.278662,
+            "Symbol": "slp",
+            "UpdatedAt": "2021-05-18T04:48:03.371Z",
+            "UIID": "smooth-love-potion"
+          },
+          {
+            "Name": "LTO Network",
+            "Price": 0.416185,
+            "Symbol": "lto",
+            "UpdatedAt": "2021-05-18T04:45:05.864Z",
+            "UIID": "lto-network"
+          },
+          {
+            "Name": "AdEx",
+            "Price": 0.986365,
+            "Symbol": "adx",
+            "UpdatedAt": "2021-05-18T04:43:33.203Z",
+            "UIID": "adex"
+          },
+          {
+            "Name": "WaykiChain",
+            "Price": 0.559228,
+            "Symbol": "wicc",
+            "UpdatedAt": "2021-05-18T04:47:36.648Z",
+            "UIID": "waykichain"
+          },
+          {
+            "Name": "Carry",
+            "Price": 0.01342874,
+            "Symbol": "cre",
+            "UpdatedAt": "2021-05-18T04:48:26.378Z",
+            "UIID": "carry"
+          },
+          {
+            "Name": "Verus Coin",
+            "Price": 1.74,
+            "Symbol": "vrsc",
+            "UpdatedAt": "2021-05-18T04:43:27.061Z",
+            "UIID": "verus-coin"
+          },
+          {
+            "Name": "API3",
+            "Price": 5.26,
+            "Symbol": "api3",
+            "UpdatedAt": "2021-05-18T04:48:20.833Z",
+            "UIID": "api3"
+          },
+          {
+            "Name": "Gala",
+            "Price": 0.01532164,
+            "Symbol": "gala",
+            "UpdatedAt": "2021-05-18T04:44:25.976Z",
+            "UIID": "gala"
+          },
+          {
+            "Name": "Alchemist",
+            "Price": 110.25,
+            "Symbol": "mist",
+            "UpdatedAt": "2021-05-18T04:38:19.105Z",
+            "UIID": "alchemist"
+          },
+          {
+            "Name": "Unit Protocol",
+            "Price": 0.02597905,
+            "Symbol": "col",
+            "UpdatedAt": "2021-05-17T08:30:39.651Z",
+            "UIID": "unit-protocol"
+          },
+          {
+            "Name": "Populous",
+            "Price": 3.14,
+            "Symbol": "ppt",
+            "UpdatedAt": "2021-05-18T04:48:36.415Z",
+            "UIID": "populous"
+          },
+          {
+            "Name": "Zenon",
+            "Price": 17.31,
+            "Symbol": "znn",
+            "UpdatedAt": "2021-05-18T04:44:35.571Z",
+            "UIID": "zenon"
+          },
+          {
+            "Name": "FUSION",
+            "Price": 1.65,
+            "Symbol": "fsn",
+            "UpdatedAt": "2021-05-18T04:48:39.757Z",
+            "UIID": "fsn"
+          },
+          {
+            "Name": "Aeternity",
+            "Price": 0.291871,
+            "Symbol": "ae",
+            "UpdatedAt": "2021-05-18T04:47:47.491Z",
+            "UIID": "aeternity"
+          },
+          {
+            "Name": "Lambda",
+            "Price": 0.058988,
+            "Symbol": "lamb",
+            "UpdatedAt": "2021-05-18T04:48:24.698Z",
+            "UIID": "lambda"
+          },
+          {
+            "Name": "Bluzelle",
+            "Price": 0.379421,
+            "Symbol": "blz",
+            "UpdatedAt": "2021-05-18T04:47:02.627Z",
+            "UIID": "bluzelle"
+          },
+          {
+            "Name": "Marlin",
+            "Price": 0.142879,
+            "Symbol": "pond",
+            "UpdatedAt": "2021-05-18T04:47:20.876Z",
+            "UIID": "marlin"
+          },
+          {
+            "Name": "ETH 2x Flexible Leverage Index",
+            "Price": 277.81,
+            "Symbol": "ETH2x-FLI",
+            "UpdatedAt": "2021-05-18T04:45:12.263Z",
+            "UIID": "eth-2x-flexible-leverage-index"
+          },
+          {
+            "Name": "RAMP",
+            "Price": 0.393354,
+            "Symbol": "ramp",
+            "UpdatedAt": "2021-05-18T04:47:03.064Z",
+            "UIID": "ramp"
+          },
+          {
+            "Name": "BarnBridge",
+            "Price": 43.42,
+            "Symbol": "bond",
+            "UpdatedAt": "2021-05-18T04:47:32.803Z",
+            "UIID": "barnbridge"
+          },
+          {
+            "Name": "Alpaca Finance",
+            "Price": 1.39,
+            "Symbol": "alpaca",
+            "UpdatedAt": "2021-05-18T04:47:16.604Z",
+            "UIID": "alpaca-finance"
+          },
+          {
+            "Name": "WHALE",
+            "Price": 19.07,
+            "Symbol": "whale",
+            "UpdatedAt": "2021-05-18T04:48:29.75Z",
+            "UIID": "whale"
+          },
+          {
+            "Name": "MAPS",
+            "Price": 1.44,
+            "Symbol": "maps",
+            "UpdatedAt": "2021-05-18T04:48:16.415Z",
+            "UIID": "maps"
+          },
+          {
+            "Name": "Olympus",
+            "Price": 478.46,
+            "Symbol": "ohm",
+            "UpdatedAt": "2021-05-18T04:48:46.617Z",
+            "UIID": "olympus"
+          },
+          {
+            "Name": "Akropolis",
+            "Price": 0.03937961,
+            "Symbol": "akro",
+            "UpdatedAt": "2021-05-18T04:48:04.692Z",
+            "UIID": "akropolis"
+          },
+          {
+            "Name": "Unit Protocol New",
+            "Price": 0.500638,
+            "Symbol": "duck",
+            "UpdatedAt": "2021-05-18T04:48:17.72Z",
+            "UIID": "unit-protocol-duck"
+          },
+          {
+            "Name": "WaultSwap",
+            "Price": 0.094543,
+            "Symbol": "wex",
+            "UpdatedAt": "2021-05-18T04:42:38.279Z",
+            "UIID": "waultswap"
+          },
+          {
+            "Name": "DFI.money",
+            "Price": 2640.07,
+            "Symbol": "yfii",
+            "UpdatedAt": "2021-05-18T04:48:13.958Z",
+            "UIID": "yfii-finance"
+          },
+          {
+            "Name": "Refinable",
+            "Price": 1.52,
+            "Symbol": "fine",
+            "UpdatedAt": "2021-05-18T04:48:02.728Z",
+            "UIID": "refinable"
+          },
+          {
+            "Name": "Energi",
+            "Price": 2.53,
+            "Symbol": "nrg",
+            "UpdatedAt": "2021-05-18T04:48:23.202Z",
+            "UIID": "energi"
+          },
+          {
+            "Name": "Efforce",
+            "Price": 1.14,
+            "Symbol": "wozx",
+            "UpdatedAt": "2021-05-18T04:44:14.531Z",
+            "UIID": "wozx"
+          },
+          {
+            "Name": "Lido DAO",
+            "Price": 3.65,
+            "Symbol": "ldo",
+            "UpdatedAt": "2021-05-18T04:45:47.62Z",
+            "UIID": "lido-dao"
+          },
+          {
+            "Name": "Vite",
+            "Price": 0.166356,
+            "Symbol": "vite",
+            "UpdatedAt": "2021-05-18T04:46:59.004Z",
+            "UIID": "vite"
+          },
+          {
+            "Name": "ShareToken",
+            "Price": 0.04202703,
+            "Symbol": "shr",
+            "UpdatedAt": "2021-05-18T04:47:39.325Z",
+            "UIID": "sharering"
+          },
+          {
+            "Name": "Kadena",
+            "Price": 0.834279,
+            "Symbol": "kda",
+            "UpdatedAt": "2021-05-18T04:47:59.193Z",
+            "UIID": "kadena"
+          },
+          {
+            "Name": "DerivaDAO",
+            "Price": 3.83,
+            "Symbol": "ddx",
+            "UpdatedAt": "2021-05-18T04:48:25.465Z",
+            "UIID": "derivadao"
+          },
+          {
+            "Name": "Earthcoin",
+            "Price": 0.00776052,
+            "Symbol": "eac",
+            "UpdatedAt": "2021-05-18T04:48:03.862Z",
+            "UIID": "earthcoin"
+          },
+          {
+            "Name": "SparkPoint",
+            "Price": 0.00919966,
+            "Symbol": "srk",
+            "UpdatedAt": "2021-05-18T04:47:49.397Z",
+            "UIID": "sparkpoint"
+          },
+          {
+            "Name": "Sora",
+            "Price": 697.16,
+            "Symbol": "xor",
+            "UpdatedAt": "2021-05-18T04:48:17.598Z",
+            "UIID": "sora"
+          },
+          {
+            "Name": "PIVX",
+            "Price": 1.51,
+            "Symbol": "pivx",
+            "UpdatedAt": "2021-05-18T04:46:20.378Z",
+            "UIID": "pivx"
+          },
+          {
+            "Name": "Nuls",
+            "Price": 0.875056,
+            "Symbol": "nuls",
+            "UpdatedAt": "2021-05-18T04:47:19.735Z",
+            "UIID": "nuls"
+          },
+          {
+            "Name": "Nerve Finance",
+            "Price": 3,
+            "Symbol": "nrv",
+            "UpdatedAt": "2021-05-18T04:48:28.941Z",
+            "UIID": "nerve-finance"
+          },
+          {
+            "Name": "DEA",
+            "Price": 957.19,
+            "Symbol": "dea",
+            "UpdatedAt": "2021-05-18T04:42:56.022Z",
+            "UIID": "dea"
+          },
+          {
+            "Name": "Rari Governance Token",
+            "Price": 11.14,
+            "Symbol": "rgt",
+            "UpdatedAt": "2021-05-18T04:47:44.557Z",
+            "UIID": "rari-governance-token"
+          },
+          {
+            "Name": "Hegic",
+            "Price": 0.190232,
+            "Symbol": "hegic",
+            "UpdatedAt": "2021-05-18T04:46:56.208Z",
+            "UIID": "hegic"
+          },
+          {
+            "Name": "Anyswap",
+            "Price": 5.55,
+            "Symbol": "any",
+            "UpdatedAt": "2021-05-18T04:46:40.153Z",
+            "UIID": "anyswap"
+          },
+          {
+            "Name": "bZx Protocol",
+            "Price": 0.684422,
+            "Symbol": "bzrx",
+            "UpdatedAt": "2021-05-18T04:48:27.406Z",
+            "UIID": "bzx-protocol"
+          },
+          {
+            "Name": "ThunderCore",
+            "Price": 0.01305038,
+            "Symbol": "tt",
+            "UpdatedAt": "2021-05-18T04:48:22.399Z",
+            "UIID": "thunder-token"
+          },
+          {
+            "Name": "Streamr",
+            "Price": 0.135512,
+            "Symbol": "data",
+            "UpdatedAt": "2021-05-18T04:47:18.357Z",
+            "UIID": "streamr-datacoin"
+          },
+          {
+            "Name": "Cream",
+            "Price": 128.46,
+            "Symbol": "cream",
+            "UpdatedAt": "2021-05-18T04:47:29.837Z",
+            "UIID": "cream-2"
+          },
+          {
+            "Name": "CertiK",
+            "Price": 2.09,
+            "Symbol": "ctk",
+            "UpdatedAt": "2021-05-18T04:47:03.286Z",
+            "UIID": "certik"
+          },
+          {
+            "Name": "Beefy.Finance",
+            "Price": 1227.58,
+            "Symbol": "bifi",
+            "UpdatedAt": "2021-05-18T04:48:06.809Z",
+            "UIID": "beefy-finance"
+          },
+          {
+            "Name": "Yuan Chain Coin",
+            "Price": 0.02023645,
+            "Symbol": "ycc",
+            "UpdatedAt": "2021-05-18T04:41:09.193Z",
+            "UIID": "yuan-chain-coin"
+          },
+          {
+            "Name": "Shopping.io",
+            "Price": 97.77,
+            "Symbol": "spi",
+            "UpdatedAt": "2021-05-18T04:46:28.648Z",
+            "UIID": "shopping-io"
+          },
+          {
+            "Name": "Ignis",
+            "Price": 0.109325,
+            "Symbol": "ignis",
+            "UpdatedAt": "2021-05-18T04:48:34.11Z",
+            "UIID": "ignis"
+          },
+          {
+            "Name": "AllianceBlock",
+            "Price": 0.513961,
+            "Symbol": "albt",
+            "UpdatedAt": "2021-05-18T04:46:08.765Z",
+            "UIID": "allianceblock"
+          },
+          {
+            "Name": "Bella Protocol",
+            "Price": 2.89,
+            "Symbol": "bel",
+            "UpdatedAt": "2021-05-18T04:47:18.959Z",
+            "UIID": "bella-protocol"
+          },
+          {
+            "Name": "Loom Network (OLD)",
+            "Price": 0.108926,
+            "Symbol": "loomold",
+            "UpdatedAt": "2021-05-18T04:47:28.849Z",
+            "UIID": "loom-network"
+          },
+          {
+            "Name": "MXC",
+            "Price": 0.03707959,
+            "Symbol": "mxc",
+            "UpdatedAt": "2021-05-18T04:48:01.368Z",
+            "UIID": "mxc"
+          },
+          {
+            "Name": "Atletico Madrid Fan Token",
+            "Price": 47.34,
+            "Symbol": "atm",
+            "UpdatedAt": "2021-05-18T04:44:16.304Z",
+            "UIID": "atletico-madrid"
+          },
+          {
+            "Name": "sEUR",
+            "Price": 1.24,
+            "Symbol": "seur",
+            "UpdatedAt": "2021-05-18T04:46:58.159Z",
+            "UIID": "seur"
+          },
+          {
+            "Name": "Hacken Token",
+            "Price": 0.271315,
+            "Symbol": "hai",
+            "UpdatedAt": "2021-05-18T04:47:23.733Z",
+            "UIID": "hackenai"
+          },
+          {
+            "Name": "SERO",
+            "Price": 0.276332,
+            "Symbol": "sero",
+            "UpdatedAt": "2021-05-18T04:48:20.398Z",
+            "UIID": "super-zero"
+          },
+          {
+            "Name": "FC Barcelona Fan Token",
+            "Price": 29.11,
+            "Symbol": "bar",
+            "UpdatedAt": "2021-05-18T04:46:12.494Z",
+            "UIID": "fc-barcelona-fan-token"
+          },
+          {
+            "Name": "Bonfida",
+            "Price": 3.26,
+            "Symbol": "fida",
+            "UpdatedAt": "2021-05-18T04:48:08.828Z",
+            "UIID": "bonfida"
+          },
+          {
+            "Name": "Nexus",
+            "Price": 1.23,
+            "Symbol": "nxs",
+            "UpdatedAt": "2021-05-18T04:47:27.058Z",
+            "UIID": "nexus"
+          },
+          {
+            "Name": "Pangolin",
+            "Price": 3.45,
+            "Symbol": "png",
+            "UpdatedAt": "2021-05-18T04:43:49.658Z",
+            "UIID": "pangolin"
+          },
+          {
+            "Name": "Groestlcoin",
+            "Price": 1.15,
+            "Symbol": "grs",
+            "UpdatedAt": "2021-05-18T04:43:07.396Z",
+            "UIID": "groestlcoin"
+          },
+          {
+            "Name": "Request",
+            "Price": 0.107327,
+            "Symbol": "req",
+            "UpdatedAt": "2021-05-18T04:43:23.656Z",
+            "UIID": "request-network"
+          },
+          {
+            "Name": "MANTRA DAO",
+            "Price": 0.277453,
+            "Symbol": "om",
+            "UpdatedAt": "2021-05-18T04:48:23.146Z",
+            "UIID": "mantra-dao"
+          },
+          {
+            "Name": "TrueFi",
+            "Price": 0.333672,
+            "Symbol": "tru",
+            "UpdatedAt": "2021-05-18T04:48:17.655Z",
+            "UIID": "truefi"
+          },
+          {
+            "Name": "Cream ETH 2",
+            "Price": 3243.4,
+            "Symbol": "creth2",
+            "UpdatedAt": "2021-05-18T04:39:24.214Z",
+            "UIID": "cream-eth2"
+          },
+          {
+            "Name": "Bifrost",
+            "Price": 0.132911,
+            "Symbol": "bfc",
+            "UpdatedAt": "2021-05-18T04:47:42.107Z",
+            "UIID": "bifrost"
+          },
+          {
+            "Name": "LBRY Credits",
+            "Price": 0.138387,
+            "Symbol": "lbc",
+            "UpdatedAt": "2021-05-18T04:46:19.903Z",
+            "UIID": "lbry-credits"
+          },
+          {
+            "Name": "BSCPAD",
+            "Price": 1.74,
+            "Symbol": "bscpad",
+            "UpdatedAt": "2021-05-18T04:48:48.252Z",
+            "UIID": "bscpad"
+          },
+          {
+            "Name": "xDAI Stake",
+            "Price": 14.38,
+            "Symbol": "stake",
+            "UpdatedAt": "2021-05-18T04:47:37.368Z",
+            "UIID": "xdai-stake"
+          },
+          {
+            "Name": "Gemini Dollar",
+            "Price": 0.998808,
+            "Symbol": "gusd",
+            "UpdatedAt": "2021-05-18T04:46:45.217Z",
+            "UIID": "gemini-dollar"
+          },
+          {
+            "Name": "GET Protocol",
+            "Price": 4.88,
+            "Symbol": "get",
+            "UpdatedAt": "2021-05-18T04:46:11.188Z",
+            "UIID": "get-token"
+          },
+          {
+            "Name": "Refereum",
+            "Price": 0.01605529,
+            "Symbol": "rfr",
+            "UpdatedAt": "2021-05-18T04:47:53.33Z",
+            "UIID": "refereum"
+          },
+          {
+            "Name": "PEAKDEFI",
+            "Price": 0.453225,
+            "Symbol": "peak",
+            "UpdatedAt": "2021-05-18T04:41:54.932Z",
+            "UIID": "marketpeak"
+          },
+          {
+            "Name": "Vesper Finance",
+            "Price": 23.62,
+            "Symbol": "vsp",
+            "UpdatedAt": "2021-05-18T04:46:53.097Z",
+            "UIID": "vesper-finance"
+          },
+          {
+            "Name": "BOSAGORA",
+            "Price": 0.255666,
+            "Symbol": "boa",
+            "UpdatedAt": "2021-05-18T04:46:31.584Z",
+            "UIID": "bosagora"
+          },
+          {
+            "Name": "Paris Saint-Germain Fan Token",
+            "Price": 36.6,
+            "Symbol": "psg",
+            "UpdatedAt": "2021-05-18T04:46:54.269Z",
+            "UIID": "paris-saint-germain-fan-token"
+          },
+          {
+            "Name": "Terra Virtua Kolect",
+            "Price": 0.351982,
+            "Symbol": "tvk",
+            "UpdatedAt": "2021-05-18T04:47:02.732Z",
+            "UIID": "terra-virtua-kolect"
+          },
+          {
+            "Name": "Kylin Network",
+            "Price": 0.770245,
+            "Symbol": "kyl",
+            "UpdatedAt": "2021-05-18T04:48:17.101Z",
+            "UIID": "kylin-network"
+          },
+          {
+            "Name": "SOLVE",
+            "Price": 0.198861,
+            "Symbol": "solve",
+            "UpdatedAt": "2021-05-18T04:46:24.018Z",
+            "UIID": "solve-care"
+          },
+          {
+            "Name": "dForce Token",
+            "Price": 0.271273,
+            "Symbol": "df",
+            "UpdatedAt": "2021-05-18T04:47:26.327Z",
+            "UIID": "dforce-token"
+          },
+          {
+            "Name": "pNetwork",
+            "Price": 1.78,
+            "Symbol": "pnt",
+            "UpdatedAt": "2021-05-18T04:45:45.776Z",
+            "UIID": "pnetwork"
+          },
+          {
+            "Name": "Neutrino System Base Token",
+            "Price": 41.3,
+            "Symbol": "nsbt",
+            "UpdatedAt": "2021-05-18T04:47:34.89Z",
+            "UIID": "neutrino-system-base-token"
+          },
+          {
+            "Name": "Glitch Protocol",
+            "Price": 1.07,
+            "Symbol": "glch",
+            "UpdatedAt": "2021-05-18T04:40:48.269Z",
+            "UIID": "glitch-protocol"
+          },
+          {
+            "Name": "HARD Protocol",
+            "Price": 1.18,
+            "Symbol": "HARD",
+            "UpdatedAt": "2021-05-18T04:48:23.186Z",
+            "UIID": "hard-protocol"
+          },
+          {
+            "Name": "Frontier",
+            "Price": 1.96,
+            "Symbol": "front",
+            "UpdatedAt": "2021-05-18T04:47:36.352Z",
+            "UIID": "frontier-token"
+          },
+          {
+            "Name": "ARPA Chain",
+            "Price": 0.076556,
+            "Symbol": "arpa",
+            "UpdatedAt": "2021-05-18T04:48:03.449Z",
+            "UIID": "arpa-chain"
+          },
+          {
+            "Name": "GXChain",
+            "Price": 1.07,
+            "Symbol": "gxc",
+            "UpdatedAt": "2021-05-18T04:48:18.921Z",
+            "UIID": "gxchain"
+          },
+          {
+            "Name": "Einsteinium",
+            "Price": 0.335546,
+            "Symbol": "emc2",
+            "UpdatedAt": "2021-05-18T04:38:57.547Z",
+            "UIID": "einsteinium"
+          },
+          {
+            "Name": "Propy",
+            "Price": 1.28,
+            "Symbol": "pro",
+            "UpdatedAt": "2021-05-18T04:38:56.32Z",
+            "UIID": "propy"
+          },
+          {
+            "Name": "Sentivate",
+            "Price": 0.02996045,
+            "Symbol": "sntvt",
+            "UpdatedAt": "2021-05-18T04:48:19.199Z",
+            "UIID": "sentivate"
+          },
+          {
+            "Name": "LGO Token",
+            "Price": 0.463174,
+            "Symbol": "lgo",
+            "UpdatedAt": "2021-05-18T04:43:00.033Z",
+            "UIID": "legolas-exchange"
+          },
+          {
+            "Name": "Sora Validator Token",
+            "Price": 6.78,
+            "Symbol": "val",
+            "UpdatedAt": "2021-05-18T04:45:47.33Z",
+            "UIID": "sora-validator-token"
+          },
+          {
+            "Name": "Dragonchain",
+            "Price": 0.200748,
+            "Symbol": "drgn",
+            "UpdatedAt": "2021-05-18T04:46:45.981Z",
+            "UIID": "dragonchain"
+          },
+          {
+            "Name": "Peercoin",
+            "Price": 2.92,
+            "Symbol": "ppc",
+            "UpdatedAt": "2021-05-18T04:48:25.096Z",
+            "UIID": "peercoin"
+          },
+          {
+            "Name": "Zero Collateral Dai",
+            "Price": 0.00141013,
+            "Symbol": "zai",
+            "UpdatedAt": "2021-05-17T12:47:33.008Z",
+            "UIID": "zero-collateral-dai"
+          },
+          {
+            "Name": "STP Network",
+            "Price": 0.064749,
+            "Symbol": "stpt",
+            "UpdatedAt": "2021-05-18T04:48:28.39Z",
+            "UIID": "stp-network"
+          },
+          {
+            "Name": "cVault.finance",
+            "Price": 7173.21,
+            "Symbol": "core",
+            "UpdatedAt": "2021-05-18T04:44:15.411Z",
+            "UIID": "cvault-finance"
+          },
+          {
+            "Name": "Cobak Token",
+            "Price": 5.57,
+            "Symbol": "cbk",
+            "UpdatedAt": "2021-05-18T04:43:21.013Z",
+            "UIID": "cobak-token"
+          },
+          {
+            "Name": "HyperCash",
+            "Price": 1.58,
+            "Symbol": "hc",
+            "UpdatedAt": "2021-05-18T04:46:24.665Z",
+            "UIID": "hshare"
+          },
+          {
+            "Name": "Vertcoin",
+            "Price": 1.19,
+            "Symbol": "vtc",
+            "UpdatedAt": "2021-05-18T04:44:28.528Z",
+            "UIID": "vertcoin"
+          },
+          {
+            "Name": "saffron.finance",
+            "Price": 886.03,
+            "Symbol": "sfi",
+            "UpdatedAt": "2021-05-18T04:46:14.623Z",
+            "UIID": "saffron-finance"
+          },
+          {
+            "Name": "Index Cooperative",
+            "Price": 49.43,
+            "Symbol": "index",
+            "UpdatedAt": "2021-05-18T04:45:32.643Z",
+            "UIID": "index-cooperative"
+          },
+          {
+            "Name": "EcoFi",
+            "Price": 5.13,
+            "Symbol": "eco",
+            "UpdatedAt": "2021-05-18T02:39:44.04Z",
+            "UIID": "ecofi"
+          },
+          {
+            "Name": "Oxen",
+            "Price": 1.28,
+            "Symbol": "oxen",
+            "UpdatedAt": "2021-05-18T04:47:57.607Z",
+            "UIID": "loki-network"
+          },
+          {
+            "Name": "Dego Finance",
+            "Price": 12.82,
+            "Symbol": "dego",
+            "UpdatedAt": "2021-05-18T04:48:21.541Z",
+            "UIID": "dego-finance"
+          },
+          {
+            "Name": "Contentos",
+            "Price": 0.0232005,
+            "Symbol": "cos",
+            "UpdatedAt": "2021-05-18T04:48:17.221Z",
+            "UIID": "contentos"
+          },
+          {
+            "Name": "ARMOR",
+            "Price": 0.777892,
+            "Symbol": "armor",
+            "UpdatedAt": "2021-05-18T04:48:13.726Z",
+            "UIID": "armor"
+          },
+          {
+            "Name": "Bridge Mutual",
+            "Price": 1.35,
+            "Symbol": "bmi",
+            "UpdatedAt": "2021-05-18T04:48:48.218Z",
+            "UIID": "bridge-mutual"
+          },
+          {
+            "Name": "Smartlands Network",
+            "Price": 13.5,
+            "Symbol": "slt",
+            "UpdatedAt": "2021-05-18T04:42:44.555Z",
+            "UIID": "smartlands"
+          },
+          {
+            "Name": "Dero",
+            "Price": 6.48,
+            "Symbol": "dero",
+            "UpdatedAt": "2021-05-18T04:47:37.894Z",
+            "UIID": "dero"
+          },
+          {
+            "Name": "Rarible",
+            "Price": 18.51,
+            "Symbol": "rari",
+            "UpdatedAt": "2021-05-18T04:48:10.647Z",
+            "UIID": "rarible"
+          },
+          {
+            "Name": "sLINK",
+            "Price": 40.3,
+            "Symbol": "slink",
+            "UpdatedAt": "2021-05-18T04:43:11.314Z",
+            "UIID": "slink"
+          },
+          {
+            "Name": "Harvest Finance",
+            "Price": 125.67,
+            "Symbol": "farm",
+            "UpdatedAt": "2021-05-18T04:47:27.531Z",
+            "UIID": "harvest-finance"
+          },
+          {
+            "Name": "DUSK Network",
+            "Price": 0.191351,
+            "Symbol": "dusk",
+            "UpdatedAt": "2021-05-18T04:47:50.546Z",
+            "UIID": "dusk-network"
+          },
+          {
+            "Name": "NXT",
+            "Price": 0.067957,
+            "Symbol": "nxt",
+            "UpdatedAt": "2021-05-18T04:48:04.123Z",
+            "UIID": "nxt"
+          },
+          {
+            "Name": "DeepBrain Chain",
+            "Price": 0.02095766,
+            "Symbol": "dbc",
+            "UpdatedAt": "2021-05-18T04:47:46.328Z",
+            "UIID": "deepbrain-chain"
+          },
+          {
+            "Name": "V.SYSTEMS",
+            "Price": 0.02911618,
+            "Symbol": "vsys",
+            "UpdatedAt": "2021-05-18T04:47:28.312Z",
+            "UIID": "v-systems"
+          },
+          {
+            "Name": "YIELD App",
+            "Price": 0.625061,
+            "Symbol": "yld",
+            "UpdatedAt": "2021-05-18T04:43:43.153Z",
+            "UIID": "yield-app"
+          },
+          {
+            "Name": "DSLA Protocol",
+            "Price": 0.01019848,
+            "Symbol": "dsla",
+            "UpdatedAt": "2021-05-18T04:46:52.811Z",
+            "UIID": "stacktical"
+          },
+          {
+            "Name": "FIO Protocol",
+            "Price": 0.275392,
+            "Symbol": "fio",
+            "UpdatedAt": "2021-05-18T04:47:28.527Z",
+            "UIID": "fio-protocol"
+          },
+          {
+            "Name": "Rai Reflex Index",
+            "Price": 3.02,
+            "Symbol": "rai",
+            "UpdatedAt": "2021-05-18T04:46:08.663Z",
+            "UIID": "rai"
+          },
+          {
+            "Name": "Chain Games",
+            "Price": 0.218694,
+            "Symbol": "chain",
+            "UpdatedAt": "2021-05-18T04:48:30.288Z",
+            "UIID": "chain-games"
+          },
+          {
+            "Name": "Sai",
+            "Price": 17.77,
+            "Symbol": "sai",
+            "UpdatedAt": "2021-05-18T03:48:52.064Z",
+            "UIID": "sai"
+          },
+          {
+            "Name": "Switcheo",
+            "Price": 0.04474609,
+            "Symbol": "swth",
+            "UpdatedAt": "2021-05-18T04:46:51.586Z",
+            "UIID": "switcheo"
+          },
+          {
+            "Name": "Keep3rV1",
+            "Price": 271.9,
+            "Symbol": "kp3r",
+            "UpdatedAt": "2021-05-18T04:47:59.565Z",
+            "UIID": "keep3rv1"
+          },
+          {
+            "Name": "#MetaHash",
+            "Price": 0.02353737,
+            "Symbol": "mhc",
+            "UpdatedAt": "2021-05-18T04:46:22.563Z",
+            "UIID": "metahash"
+          },
+          {
+            "Name": "SmartKey",
+            "Price": 0.326968,
+            "Symbol": "skey",
+            "UpdatedAt": "2021-05-18T04:48:30.191Z",
+            "UIID": "smartkey"
+          },
+          {
+            "Name": "Auto",
+            "Price": 2450.63,
+            "Symbol": "auto",
+            "UpdatedAt": "2021-05-18T04:47:01.78Z",
+            "UIID": "auto"
+          },
+          {
+            "Name": "DigixDAO",
+            "Price": 668.48,
+            "Symbol": "dgd",
+            "UpdatedAt": "2021-05-18T04:47:44.854Z",
+            "UIID": "digixdao"
+          },
+          {
+            "Name": "Nimiq",
+            "Price": 0.00814545,
+            "Symbol": "nim",
+            "UpdatedAt": "2021-05-18T04:47:50.674Z",
+            "UIID": "nimiq-2"
+          },
+          {
+            "Name": "Everest",
+            "Price": 0.532125,
+            "Symbol": "id",
+            "UpdatedAt": "2021-05-18T04:44:57.968Z",
+            "UIID": "everid"
+          },
+          {
+            "Name": "Decentral Games",
+            "Price": 266.2,
+            "Symbol": "dg",
+            "UpdatedAt": "2021-05-18T04:40:05.503Z",
+            "UIID": "decentral-games"
+          },
+          {
+            "Name": "Hermez Network",
+            "Price": 5.83,
+            "Symbol": "hez",
+            "UpdatedAt": "2021-05-18T04:46:58.989Z",
+            "UIID": "hermez-network-token"
+          },
+          {
+            "Name": "Nest Protocol",
+            "Price": 0.02969826,
+            "Symbol": "nest",
+            "UpdatedAt": "2021-05-18T04:47:42.759Z",
+            "UIID": "nest"
+          },
+          {
+            "Name": "Liquity",
+            "Price": 16.37,
+            "Symbol": "lqty",
+            "UpdatedAt": "2021-05-18T04:48:06.737Z",
+            "UIID": "liquity"
+          },
+          {
+            "Name": "Banano",
+            "Price": 0.04953761,
+            "Symbol": "ban",
+            "UpdatedAt": "2021-05-18T04:47:46.618Z",
+            "UIID": "banano"
+          },
+          {
+            "Name": "Apollo",
+            "Price": 0.00413002,
+            "Symbol": "apl",
+            "UpdatedAt": "2021-05-18T04:48:29.325Z",
+            "UIID": "apollo"
+          },
+          {
+            "Name": "Wing Finance",
+            "Price": 37.79,
+            "Symbol": "wing",
+            "UpdatedAt": "2021-05-18T04:48:18.22Z",
+            "UIID": "wing-finance"
+          },
+          {
+            "Name": "Stafi",
+            "Price": 2.22,
+            "Symbol": "fis",
+            "UpdatedAt": "2021-05-18T04:47:59.822Z",
+            "UIID": "stafi"
+          },
+          {
+            "Name": "Aavegotchi",
+            "Price": 1.36,
+            "Symbol": "ghst",
+            "UpdatedAt": "2021-05-18T04:48:23.322Z",
+            "UIID": "aavegotchi"
+          },
+          {
+            "Name": "Visor",
+            "Price": 2.4,
+            "Symbol": "visr",
+            "UpdatedAt": "2021-05-18T04:41:38.285Z",
+            "UIID": "visor"
+          },
+          {
+            "Name": "Ripio Credit Network",
+            "Price": 0.115162,
+            "Symbol": "rcn",
+            "UpdatedAt": "2021-05-18T04:46:43.138Z",
+            "UIID": "ripio-credit-network"
+          },
+          {
+            "Name": "UniLend Finance",
+            "Price": 1.35,
+            "Symbol": "uft",
+            "UpdatedAt": "2021-05-18T04:47:36.329Z",
+            "UIID": "unlend-finance"
+          },
+          {
+            "Name": "Telos",
+            "Price": 0.264753,
+            "Symbol": "tlos",
+            "UpdatedAt": "2021-05-18T04:47:34.236Z",
+            "UIID": "telos"
+          },
+          {
+            "Name": "Aergo",
+            "Price": 0.222283,
+            "Symbol": "aergo",
+            "UpdatedAt": "2021-05-18T04:46:28.737Z",
+            "UIID": "aergo"
+          },
+          {
+            "Name": "sBTC",
+            "Price": 46310,
+            "Symbol": "sbtc",
+            "UpdatedAt": "2021-05-18T04:43:16.491Z",
+            "UIID": "sbtc"
+          },
+          {
+            "Name": "DigitalBits",
+            "Price": 0.076308,
+            "Symbol": "xdb",
+            "UpdatedAt": "2021-05-18T04:46:18.767Z",
+            "UIID": "digitalbits"
+          },
+          {
+            "Name": "Rootkit",
+            "Price": 6019.71,
+            "Symbol": "root",
+            "UpdatedAt": "2021-05-18T04:43:44.793Z",
+            "UIID": "rootkit"
+          },
+          {
+            "Name": "ZB Token",
+            "Price": 0.519214,
+            "Symbol": "zb",
+            "UpdatedAt": "2021-05-18T04:48:23.08Z",
+            "UIID": "zb-token"
+          },
+          {
+            "Name": "Metronome",
+            "Price": 4.87,
+            "Symbol": "met",
+            "UpdatedAt": "2021-05-18T04:48:25.493Z",
+            "UIID": "metronome"
+          },
+          {
+            "Name": "BTU Protocol",
+            "Price": 0.707346,
+            "Symbol": "btu",
+            "UpdatedAt": "2021-05-18T04:39:54.044Z",
+            "UIID": "btu-protocol"
+          },
+          {
+            "Name": "Tornado Cash",
+            "Price": 86.37,
+            "Symbol": "torn",
+            "UpdatedAt": "2021-05-18T04:48:08.227Z",
+            "UIID": "tornado-cash"
+          },
+          {
+            "Name": "BoringDAO",
+            "Price": 618.14,
+            "Symbol": "bor",
+            "UpdatedAt": "2021-05-18T04:47:45.334Z",
+            "UIID": "boringdao"
+          },
+          {
+            "Name": "Empty Set Dollar",
+            "Price": 0.109486,
+            "Symbol": "esd",
+            "UpdatedAt": "2021-05-18T04:47:34.765Z",
+            "UIID": "empty-set-dollar"
+          },
+          {
+            "Name": "Radicle",
+            "Price": 11.89,
+            "Symbol": "rad",
+            "UpdatedAt": "2021-05-18T04:47:31.808Z",
+            "UIID": "radicle"
+          },
+          {
+            "Name": "AIOZ Network",
+            "Price": 0.899283,
+            "Symbol": "aioz",
+            "UpdatedAt": "2021-05-18T04:46:33.257Z",
+            "UIID": "aioz-network"
+          },
+          {
+            "Name": "FREE coin",
+            "Price": 6.21E-06,
+            "Symbol": "free",
+            "UpdatedAt": "2021-05-18T04:48:18.445Z",
+            "UIID": "free-coin"
+          },
+          {
+            "Name": "SportX",
+            "Price": 0.692883,
+            "Symbol": "sx",
+            "UpdatedAt": "2021-05-18T04:23:04.096Z",
+            "UIID": "sportx"
+          },
+          {
+            "Name": "Bao Finance",
+            "Price": 0.00074788,
+            "Symbol": "bao",
+            "UpdatedAt": "2021-05-18T04:48:15.647Z",
+            "UIID": "bao-finance"
+          }
+        ],
+        "errors": []
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Data1"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "data",
+        "errors"
+      ]
+    },
+    "Data1": {
+      "title": "Data1",
+      "example": {
+        "Name": "Metadium",
+        "Price": 0.127743,
+        "Symbol": "meta",
+        "UpdatedAt": "2021-05-18T04:43:28.934Z",
+        "UIID": "metadium"
+      },
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Price": {
+          "type": "number",
+          "format": "double"
+        },
+        "Symbol": {
+          "type": "string"
+        },
+        "UpdatedAt": {
+          "type": "string"
+        },
+        "UIID": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Name",
+        "Price",
+        "Symbol",
+        "UpdatedAt",
+        "UIID"
+      ]
+    },
+    "AddCoinRequest": {
+      "title": "AddCoinRequest",
+      "example": {
+        "coinUIID": "mcdex"
+      },
+      "type": "object",
+      "properties": {
+        "coinUIID": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "coinUIID"
+      ]
+    },
+    "AddCoinError1": {
+      "title": "AddCoinError1",
+      "example": {
+        "code": "000",
+        "data": null,
+        "message": "Coin doesn't exist coinID: dogecoinasdfasdfasdfas"
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "data",
+        "message"
+      ]
+    },
+    "AddCoinSuccess": {
+      "title": "AddCoinSuccess",
+      "example": {
+        "code": null,
+        "message": "Success",
+        "data": {
+          "Image": "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579",
+          "Name": "Bitcoin",
+          "Price": 43520,
+          "Symbol": "btc",
+          "UpdatedAt": "2021-05-17T04:44:15.749Z",
+          "UIID": "bitcoin"
+        },
+        "errors": []
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/Data2"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "data",
+        "errors"
+      ]
+    },
+    "Data2": {
+      "title": "Data2",
+      "example": {
+        "Image": "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579",
+        "Name": "Bitcoin",
+        "Price": 43520,
+        "Symbol": "btc",
+        "UpdatedAt": "2021-05-17T04:44:15.749Z",
+        "UIID": "bitcoin"
+      },
+      "type": "object",
+      "properties": {
+        "Image": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Price": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Symbol": {
+          "type": "string"
+        },
+        "UpdatedAt": {
+          "type": "string"
+        },
+        "UIID": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Image",
+        "Name",
+        "Price",
+        "Symbol",
+        "UpdatedAt",
+        "UIID"
+      ]
+    },
+    "GetTopCoinsSuccess": {
+      "title": "GetTopCoinsSuccess",
+      "example": {
+        "code": null,
+        "message": "Success",
+        "data": [
+          {
+            "Symbol": "bz",
+            "Name": "BitZ Token",
+            "Image": "https://assets.coingecko.com/coins/images/4774/large/BitZ.?1613974566",
+            "UpdatedAt": "2021-05-18T04:41:28.85Z",
+            "usd": 0.41306,
+            "eur": 0.339554,
+            "ars": 38.85
+          },
+          {
+            "Symbol": "doge",
+            "Name": "Dogecoin",
+            "Image": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
+            "UpdatedAt": "2021-05-18T04:51:03.606Z",
+            "usd": 0.502533,
+            "eur": 0.413105,
+            "ars": 47.27
+          },
+          {
+            "Symbol": "mcb",
+            "Name": "MCDEX",
+            "Image": "https://assets.coingecko.com/coins/images/11796/large/mcb.png?1594355515",
+            "UpdatedAt": "2021-05-18T04:50:47.252Z",
+            "usd": 23.06,
+            "eur": 18.96,
+            "ars": 2169.44
+          },
+          {
+            "Symbol": "btc",
+            "Name": "Bitcoin",
+            "Image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+            "UpdatedAt": "2021-05-18T04:50:23.822Z",
+            "usd": 45578,
+            "eur": 37467,
+            "ars": 4287219
+          }
+        ],
+        "errors": []
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Data3"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "data",
+        "errors"
+      ]
+    },
+    "Data3": {
+      "title": "Data3",
+      "example": {
+        "Symbol": "bz",
+        "Name": "BitZ Token",
+        "Image": "https://assets.coingecko.com/coins/images/4774/large/BitZ.?1613974566",
+        "UpdatedAt": "2021-05-18T04:41:28.85Z",
+        "usd": 0.41306,
+        "eur": 0.339554,
+        "ars": 38.85
+      },
+      "type": "object",
+      "properties": {
+        "Symbol": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Image": {
+          "type": "string"
+        },
+        "UpdatedAt": {
+          "type": "string"
+        },
+        "usd": {
+          "type": "number",
+          "format": "double"
+        },
+        "eur": {
+          "type": "number",
+          "format": "double"
+        },
+        "ars": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "Symbol",
+        "Name",
+        "Image",
+        "UpdatedAt",
+        "usd",
+        "eur",
+        "ars"
+      ]
+    },
+    "GetTopCoinsUnauthorized1": {
+      "title": "GetTopCoinsUnauthorized1",
+      "example": {
+        "code": "001",
+        "data": null,
+        "message": "Unauthorized, session ended",
+        "errors": [
+          "Unauthorized, session ended"
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "data",
+        "message",
+        "errors"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
