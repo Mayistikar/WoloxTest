@@ -1,7 +1,10 @@
-import { MinLength, IsNotEmpty } from 'class-validator';
+import { IsString, MinLength, IsNotEmpty } from 'class-validator';
 
 class UserDTO {
+  @IsString()
   Name: string
+
+  @IsString()
   Surname: string
 
   @IsNotEmpty()
