@@ -1,12 +1,15 @@
+import { CurrencyMockRepository } from '../../../../../currency/infrastructure/data_sources/mock/currency_mock';
 import { CoinDTO, CoinDTOBuilder } from '../../dtos/coin_dto';
 
 const CoinGecko = require('coingecko-api');
 
 class CoinGeckoSDK {
   CoinGeckoClient: any;
+  CurrencyMockRepository: CurrencyMockRepository;
 
   constructor() {
     this.CoinGeckoClient = new CoinGecko();
+    this.CurrencyMockRepository = new CurrencyMockRepository();
   }
 
   async Ping(): Promise<boolean> {
@@ -52,9 +55,16 @@ class CoinGeckoSDK {
       .Price(response.data?.market_data?.current_price?.usd)
       .Symbol(response.data?.symbol)
       .UpdatedAt(response.data?.last_updated)
+      .MarketPlace(response.data?.market_data)
       .Build();
 
     return coinDTO;
+  }
+
+  async FindByUIIDs(coinIDs: string[], currency: string, ): Promise<any[]> {    
+    const response = await this.CoinGeckoClient.coins.markets({ per_page: 250, vs_currency: currency, ids: coinIDs });
+    if (!response.success) return [];
+    return response.data;
   }
 }
 

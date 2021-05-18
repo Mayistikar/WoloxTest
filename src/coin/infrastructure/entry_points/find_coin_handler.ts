@@ -22,6 +22,23 @@ class FindCoinHandler {
       next(error);
     }
   }
+
+  FindTop = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const token = req.header('authorization');      
+      const jwt = JWTGet(token);
+
+      const { order } = req.query;
+
+      const ascOrder = (!!order && order.toString().toLocaleLowerCase() === 'asc');
+
+      const coins = await this.FindCoinUseCase.FindTop(jwt.sub, ascOrder);
+      return res.status(200).json({ code: null, message: 'Success', data: coins, errors: [] })
+    } catch (error) {
+      console.error({ error });
+      next(error);      
+    }
+  }
 }
 
 export { FindCoinHandler }

@@ -5,6 +5,8 @@ import { JWTOutOfDate, JWTValidate } from "../../../_shared/security/jwt"
 const JWTAuth = (req: Request, res: Response, next: NextFunction) => {
   try {
     const bearer = req.header('authorization');
+    if (!bearer) throw new Error('Unahutorized');
+    
     const token = bearer.split('Bearer ')[1];
     if (!token) throw new Error('Unauthorized');
 
