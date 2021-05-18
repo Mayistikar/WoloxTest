@@ -25,11 +25,13 @@
     "bcrypt": "^5.0.1",
     "class-validator": "^0.13.1",
     "coingecko-api": "^1.0.10",
+    "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.1.6",
     "typeorm": "^0.2.32",
     "utf8": "^3.0.0"
   },
