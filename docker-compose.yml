@@ -17,6 +17,8 @@ services:
     environment:
       PORT: 3000
       DB_HOST: wolox-mysql
+      JWT: 5D7BE4FDA2188B5191BE3F912814E
+      COINGECKO_API: https://coingecko.com/api/documentations/v3
     networks:
       - default
   wolox-mysql:
